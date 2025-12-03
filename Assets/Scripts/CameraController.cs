@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [Header("Player Tags")]
-    [SerializeField] private string player1Tag = "Player1";
-    [SerializeField] private string player2Tag = "Player2";
+    [Header("Players (Parent Objects)")]
+    [SerializeField] private Transform player1Parent;
+    [SerializeField] private Transform player2Parent;
 
     [Header("Camera Movement")]
     [SerializeField] private float followSpeed = 5f;
@@ -17,38 +17,39 @@ public class CameraController : MonoBehaviour
 
     private Camera cam;
 
-    private Transform player1;
-    private Transform player2;
-
     private void Start()
     {
         cam = Camera.main;
-        RefreshPlayers();
     }
 
     private void LateUpdate()
     {
-        // Try to refetch players if missing (useful if they spawn later)
-        if (player1 == null || player2 == null)
-            RefreshPlayers();
+        // Get the active child of each player parent
+        Transform player1 = GetActiveChild(player1Parent);
+        Transform player2 = GetActiveChild(player2Parent);
 
+        // If both are null, do nothing
         if (player1 == null && player2 == null)
             return;
 
-        UpdatePosition();
-        UpdateZoom();
+        UpdatePosition(player1, player2);
+        UpdateZoom(player1, player2);
     }
 
-    private void RefreshPlayers()
+    private Transform GetActiveChild(Transform parent)
     {
-        GameObject p1 = GameObject.FindGameObjectWithTag(player1Tag);
-        GameObject p2 = GameObject.FindGameObjectWithTag(player2Tag);
+        if (parent == null) return null;
 
-        player1 = p1 != null ? p1.transform : null;
-        player2 = p2 != null ? p2.transform : null;
+        foreach (Transform child in parent)
+        {
+            if (child.gameObject.activeInHierarchy)
+                return child; // Return the first active child
+        }
+
+        return null; // No active children
     }
 
-    private void UpdatePosition()
+    private void UpdatePosition(Transform player1, Transform player2)
     {
         Vector3 midpoint;
 
@@ -63,7 +64,7 @@ public class CameraController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
     }
 
-    private void UpdateZoom()
+    private void UpdateZoom(Transform player1, Transform player2)
     {
         float targetZoom = minZoom;
 
@@ -71,6 +72,10 @@ public class CameraController : MonoBehaviour
         {
             float distance = Vector2.Distance(player1.position, player2.position);
             targetZoom = Mathf.Lerp(minZoom, maxZoom, distance / zoomLimiter);
+        }
+        else if (player1 != null || player2 != null)
+        {
+            targetZoom = minZoom; // Zoom in if only one active child
         }
 
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetZoom, zoomSpeed * Time.deltaTime);

@@ -1038,7 +1038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8033d25c378ade43bb0fe10c88aa320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: Map 1
+  gameSceneName: GameLevelScene
   p1SelectionSprites:
   - {fileID: 1596062273}
   - {fileID: 77359572}

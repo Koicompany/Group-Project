@@ -69,6 +69,6 @@ public class Health : MonoBehaviour
         yield return new WaitForSeconds(deathDelay);
 
         // Finally deactivate the player object
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

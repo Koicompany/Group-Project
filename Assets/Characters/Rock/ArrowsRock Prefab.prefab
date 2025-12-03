@@ -290,6 +290,7 @@ MonoBehaviour:
   rotationSpeed: 750
   ballCollider: {fileID: 6564635798549333919}
   normalCollider: {fileID: 4665778068530611605}
+  rollDamage: 25
 --- !u!114 &7512633230502510877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,5 +330,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincible: 0
-  startingHealth: 100
+  startingHealth: 200
   deathDelay: 1.2

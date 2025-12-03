@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincible: 0
-  startingHealth: 100
+  startingHealth: 150
   deathDelay: 0.5
 --- !u!114 &8433748685941256694
 MonoBehaviour:

@@ -275,6 +275,7 @@ MonoBehaviour:
   invincible: 0
   startingHealth: 150
   deathDelay: 0.5
+  hitFlashDuration: 1
 --- !u!114 &5973243900124294326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,7 +294,7 @@ MonoBehaviour:
   damage: 10
   projectile: {fileID: 3038603725919490978, guid: 09efccbde7f4bbe4f86c780d23372deb, type: 3}
   firePoint: {fileID: 5746389698790210168}
-  colliderDistance: 2.02
+  colliderDistance: 2
   boxCollider: {fileID: 3306757794987300024}
   enemyTag: Player1
 --- !u!1 &8468246381415174576

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Health : MonoBehaviour
 {
@@ -7,12 +8,14 @@ public class Health : MonoBehaviour
     [Header("Health")]
     [SerializeField] private float startingHealth = 100f;
     [SerializeField] private float deathDelay = 1.2f;  // time before despawning
+    [SerializeField] private float hitFlashDuration = 1f; // duration of red/white flash
 
     public float currentHealth { get; private set; }
 
     private Animator anim;
     private bool dead = false;
     private BoxCollider2D boxCollider;
+    private SpriteRenderer spriteRenderer;
 
     // Store all scripts that should disable upon death
     private MonoBehaviour[] playerScripts;
@@ -22,6 +25,7 @@ public class Health : MonoBehaviour
         currentHealth = startingHealth;
         boxCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         // Cache every script on the player EXCEPT this one
         playerScripts = GetComponents<MonoBehaviour>();
@@ -29,13 +33,14 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (dead || invincible) return;  // skip damage if invincible
+        if (dead || invincible) return;
 
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
 
         if (currentHealth > 0)
         {
             anim.SetTrigger("hurt");
+            StartCoroutine(HitFlash());
         }
         else
         {
@@ -43,32 +48,42 @@ public class Health : MonoBehaviour
         }
     }
 
+    private IEnumerator HitFlash()
+    {
+        if (spriteRenderer == null) yield break;
+
+        float elapsed = 0f;
+        bool toggle = true;
+
+        while (elapsed < hitFlashDuration)
+        {
+            spriteRenderer.color = toggle ? Color.red : Color.white;
+            toggle = !toggle;
+            elapsed += 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        spriteRenderer.color = Color.white; // reset to default
+    }
+
     private void Die()
     {
         dead = true;
 
-        // Trigger death animation
         anim.SetTrigger("die");
 
-
-
-        // Disable all player behavior scripts (movement, attacking, etc.)
         foreach (var script in playerScripts)
         {
             if (script != this)
                 script.enabled = false;
         }
 
-        // Begin delayed removal
         StartCoroutine(DeathSequence());
     }
 
-    private System.Collections.IEnumerator DeathSequence()
+    private IEnumerator DeathSequence()
     {
-        // Optional: wait for animation length
         yield return new WaitForSeconds(deathDelay);
-
-        // Finally deactivate the player object
         Destroy(gameObject);
     }
 }

@@ -2,17 +2,16 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private float fixedSpeed;
     [SerializeField] private float speed;
     [SerializeField] private float resetTime;
+    [SerializeField] private float projectileDmg;
+
     private float lifetime;
     private float direction;
-
+    private bool hit;
 
     private Animator anim;
     private BoxCollider2D coll;
-
-    private bool hit;
 
     private void Awake()
     {
@@ -31,28 +30,41 @@ public class Projectile : MonoBehaviour
     private void Update()
     {
         if (hit) return;
+
         float movementSpeed = speed * Time.deltaTime * direction;
         transform.Translate(movementSpeed, 0, 0);
 
         lifetime += Time.deltaTime;
-        if (lifetime > resetTime) gameObject.SetActive(false);
+        if (lifetime > resetTime)
+        {
+            Deactivate();
+        }
     }
-
-    [SerializeField] protected float ProjectileDmg;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Only react if it hit the enemy or ground
-        if (!collision.CompareTag("Player1") && !collision.CompareTag("Ground") && !collision.CompareTag("Player2")) return;
+        // Only destroy projectile if it hits Player1, Player2, or Ground
+        if (!collision.CompareTag("Player1") && !collision.CompareTag("Player2") && !collision.CompareTag("Ground"))
+            return;
 
         hit = true;
-        collision.GetComponent<Health>()?.TakeDamage(ProjectileDmg);
+
+        // Deal damage if the target has a Health component
+        collision.GetComponent<Health>()?.TakeDamage(projectileDmg);
+
         coll.enabled = false;
 
+        // Optionally play hit animation
         if (anim != null)
-            gameObject.SetActive(false);
+        {
+            anim.SetTrigger("Hit"); // Make sure you have a "Hit" trigger in Animator
+            // Could also wait a short time before deactivating
+        }
+        else
+        {
+            Deactivate();
+        }
     }
-
 
     public void SetDirection(float _direction)
     {
@@ -62,11 +74,8 @@ public class Projectile : MonoBehaviour
         hit = false;
         coll.enabled = true;
 
-        fixedSpeed = speed;
-
         float localScaleX = Mathf.Abs(transform.localScale.x) * _direction;
         transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
-
     }
 
     private void Deactivate()

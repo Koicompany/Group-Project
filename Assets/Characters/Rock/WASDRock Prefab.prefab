@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2905277194856907669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5225171578301828566}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5225171578301828566
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2905277194856907669}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.85, y: 3.49, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2324229377577975629}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8047474471585648145
 GameObject:
   m_ObjectHideFlags: 0
@@ -18,6 +49,7 @@ GameObject:
   - component: {fileID: 1981810150165371261}
   - component: {fileID: 5030730279409444193}
   - component: {fileID: 7475190798790583645}
+  - component: {fileID: 3159757688596311465}
   m_Layer: 10
   m_Name: WASDRock Prefab
   m_TagString: Player1
@@ -39,6 +71,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8630639730751699928}
+  - {fileID: 5225171578301828566}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &7370072891050543969
@@ -79,7 +112,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.9, y: 5.621372}
+    oldSize: {x: 10.5, y: 10.502564}
     newSize: {x: 10.5, y: 10.502564}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -158,7 +191,7 @@ SpriteRenderer:
   m_SortingLayerID: -638444597
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -974764642225972632, guid: b9c0259cf48638547b297131cf8d2b0a, type: 3}
+  m_Sprite: {fileID: 1013366739975189944, guid: 8c60593e1f895a944b7e815df4efde7c, type: 3}
   m_Color: {r: 1, g: 0.7327044, b: 0.7327044, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -301,6 +334,30 @@ MonoBehaviour:
   invincible: 0
   startingHealth: 200
   deathDelay: 1.2
+  hitFlashDuration: 1
+--- !u!114 &3159757688596311465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047474471585648145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8738221bdbf3e4191e57a32ac41f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCooldown: 1
+  projectileCooldown: 1
+  meleeDelay: 0.3
+  projectileDelay: 0.5
+  range: 1
+  damage: 20
+  projectile: {fileID: 252862071063387240, guid: 3ed081a913a1e6d468030b7bf2bd1d69, type: 3}
+  firePoint: {fileID: 5225171578301828566}
+  colliderDistance: 6
+  boxCollider: {fileID: 7370072891050543969}
+  enemyTag: Player2
 --- !u!1 &8550107585557126485
 GameObject:
   m_ObjectHideFlags: 0

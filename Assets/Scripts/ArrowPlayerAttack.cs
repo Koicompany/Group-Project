@@ -1,24 +1,28 @@
 using UnityEngine;
+using System.Collections;
 
 public class ArrowPlayerAttack : MonoBehaviour
 {
     [Header("Attack Parameters")]
-    [SerializeField] private float attackCooldown;
-    [SerializeField] private float projectileCooldown;
-    [SerializeField] private float range;
-    [SerializeField] private int damage;
+    [SerializeField] private float attackCooldown = 1f;
+    [SerializeField] private float projectileCooldown = 1f;
+    [SerializeField] private float meleeDelay = 0.3f;       // Delay before melee deals damage
+    [SerializeField] private float projectileDelay = 0.5f;  // Delay before projectile fires
+    [SerializeField] private float range = 1f;
+    [SerializeField] private int damage = 10;
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform firePoint;
 
     [Header("Collider Parameters")]
-    [SerializeField] private float colliderDistance;
+    [SerializeField] private float colliderDistance = 1f;
     [SerializeField] private BoxCollider2D boxCollider;
 
     [Header("Enemy Tag")]
-    [SerializeField] private string enemyTag = "Enemy";  // Changed from 'tag' type to string
+    [SerializeField] private string enemyTag = "Enemy";
 
     private Animator anim;
     private float cooldownTimer = Mathf.Infinity;
+    private bool isAttacking = false;
 
     private void Awake()
     {
@@ -27,42 +31,53 @@ public class ArrowPlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        cooldownTimer += Time.deltaTime;  // Move this outside the input checks
+        cooldownTimer += Time.deltaTime;
 
         // Melee attack - key M
-        if (Input.GetKeyDown(KeyCode.M) && cooldownTimer > attackCooldown)
+        if (Input.GetKeyDown(KeyCode.M) && cooldownTimer > attackCooldown && !isAttacking)
         {
-            Attack();
+            StartCoroutine(MeleeAttack());
         }
 
         // Ranged attack - key Comma (,)
-        if (Input.GetKeyDown(KeyCode.Comma) && cooldownTimer > projectileCooldown)
+        if (Input.GetKeyDown(KeyCode.Comma) && cooldownTimer > projectileCooldown && !isAttacking)
         {
-            Projectile(); // renamed from Projectile() for clarity
+            StartCoroutine(RangedAttack());
         }
     }
 
-    private void Attack()
+    private IEnumerator MeleeAttack()
     {
-        anim.SetTrigger("attack");
-        cooldownTimer = 0;
+        isAttacking = true;
+        cooldownTimer = 0f;
 
-        DamageEnemy(); // Call damage function when attacking
+        anim.SetTrigger("attack");
+
+        yield return new WaitForSeconds(meleeDelay); // delay before damage
+
+        DamageEnemy();
+
+        isAttacking = false;
     }
 
-    private void OnDrawGizmos()
+    private IEnumerator RangedAttack()
     {
-        if (boxCollider == null) return;
+        isAttacking = true;
+        cooldownTimer = 0f;
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(
-            boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
-            new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
+        anim.SetTrigger("longRange");
+
+        yield return new WaitForSeconds(projectileDelay); // delay before firing projectile
+
+        FireProjectile();
+
+        isAttacking = false;
     }
 
     private void DamageEnemy()
     {
-        // BoxCast in front of player
+        if (boxCollider == null) return;
+
         RaycastHit2D hit = Physics2D.BoxCast(
             boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
             new Vector2(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y),
@@ -71,20 +86,14 @@ public class ArrowPlayerAttack : MonoBehaviour
             0f
         );
 
-        if (hit.collider != null && hit.collider.CompareTag(enemyTag))  // Check tag instead of layer
+        if (hit.collider != null && hit.collider.CompareTag(enemyTag))
         {
-            Health enemyHealth = hit.collider.GetComponent<Health>();
-            if (enemyHealth != null)
-            {
-                enemyHealth.TakeDamage(damage);
-            }
+            hit.collider.GetComponent<Health>()?.TakeDamage(damage);
         }
     }
 
-    private void Projectile()
+    private void FireProjectile()
     {
-        cooldownTimer = 0;
-
         GameObject newProjectile = FindProjectile();
         if (newProjectile != null)
         {
@@ -101,7 +110,6 @@ public class ArrowPlayerAttack : MonoBehaviour
             return null;
         }
 
-        GameObject newProjectile = Instantiate(projectile, firePoint.position, Quaternion.identity);
-        return newProjectile;
+        return Instantiate(projectile, firePoint.position, Quaternion.identity);
     }
 }

@@ -37,7 +37,7 @@ public class Projectile : MonoBehaviour
         lifetime += Time.deltaTime;
         if (lifetime > resetTime)
         {
-            Deactivate();
+            Destroy(gameObject);
         }
     }
 
@@ -45,6 +45,7 @@ public class Projectile : MonoBehaviour
     {
         // Only destroy projectile if it hits Player1, Player2, or Ground
         if (!collision.CompareTag("Player1") && !collision.CompareTag("Player2") && !collision.CompareTag("Ground"))
+
             return;
 
         hit = true;
@@ -54,16 +55,8 @@ public class Projectile : MonoBehaviour
 
         coll.enabled = false;
 
-        // Optionally play hit animation
-        if (anim != null)
-        {
-            anim.SetTrigger("Hit"); // Make sure you have a "Hit" trigger in Animator
-            // Could also wait a short time before deactivating
-        }
-        else
-        {
-            Deactivate();
-        }
+        Destroy(gameObject);
+
     }
 
     public void SetDirection(float _direction)
@@ -78,8 +71,4 @@ public class Projectile : MonoBehaviour
         transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
     }
 
-    private void Deactivate()
-    {
-        gameObject.SetActive(false);
-    }
 }

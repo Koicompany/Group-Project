@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 5179271741746697277}
   - component: {fileID: 7512633230502510877}
   - component: {fileID: 1007142515890343262}
+  - component: {fileID: 2976437555839696008}
   m_Layer: 11
   m_Name: ArrowsRock Prefab
   m_TagString: Player2
@@ -70,6 +71,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4512995404303035581}
+  - {fileID: 6896193195914993056}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &4665778068530611605
@@ -332,3 +334,58 @@ MonoBehaviour:
   invincible: 0
   startingHealth: 200
   deathDelay: 1.2
+  hitFlashDuration: 1
+--- !u!114 &2976437555839696008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883770074394691030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fe479ae1dee2414c9373c4b686b35cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCooldown: 1
+  projectileCooldown: 1
+  meleeDelay: 0.3
+  projectileDelay: 0.5
+  range: 2
+  damage: 20
+  projectile: {fileID: 252862071063387240, guid: 3ed081a913a1e6d468030b7bf2bd1d69, type: 3}
+  firePoint: {fileID: 6896193195914993056}
+  colliderDistance: 1
+  boxCollider: {fileID: 4665778068530611605}
+  enemyTag: Player1
+--- !u!1 &1821082048749786804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6896193195914993056}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6896193195914993056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821082048749786804}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.1, y: 3.36, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1123862515333227607}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

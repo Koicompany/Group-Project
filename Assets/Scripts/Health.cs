@@ -52,19 +52,22 @@ public class Health : MonoBehaviour
     {
         if (spriteRenderer == null) yield break;
 
+        Color originalColor = spriteRenderer.color; // Save the current tint
+
         float elapsed = 0f;
         bool toggle = true;
 
         while (elapsed < hitFlashDuration)
         {
-            spriteRenderer.color = toggle ? Color.red : Color.white;
+            spriteRenderer.color = toggle ? Color.red : originalColor;
             toggle = !toggle;
             elapsed += 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
 
-        spriteRenderer.color = Color.white; // reset to default
+        spriteRenderer.color = originalColor; // Restore original tint
     }
+
 
     private void Die()
     {

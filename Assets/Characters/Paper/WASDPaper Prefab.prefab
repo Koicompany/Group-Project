@@ -290,7 +290,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCooldown: 1
   projectileCooldown: 1
-  range: 3
+  meleeDelay: 0.05
+  projectileDelay: 0.44
+  range: 2
   damage: 10
   projectile: {fileID: 3038603725919490978, guid: 09efccbde7f4bbe4f86c780d23372deb, type: 3}
   firePoint: {fileID: 8828335518484988135}

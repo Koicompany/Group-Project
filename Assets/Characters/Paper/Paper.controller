@@ -212,9 +212,6 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: AirPlane
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
     m_ConditionEvent: longRange
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
@@ -254,7 +251,7 @@ AnimatorStateMachine:
     m_Position: {x: 300, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7225268757649742764}
-    m_Position: {x: 340, y: 270, z: 0}
+    m_Position: {x: 330, y: 260, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 340824862025057136}
     m_Position: {x: 380, y: 320, z: 0}

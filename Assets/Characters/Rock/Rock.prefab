@@ -201,3 +201,4 @@ MonoBehaviour:
   speed: 10
   resetTime: 5
   projectileDmg: 15
+  isNativeLeftFacing: 0

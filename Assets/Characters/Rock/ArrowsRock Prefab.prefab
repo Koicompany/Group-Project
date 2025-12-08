@@ -351,11 +351,11 @@ MonoBehaviour:
   projectileCooldown: 1
   meleeDelay: 0.3
   projectileDelay: 0.5
-  range: 2
+  range: 1
   damage: 20
   projectile: {fileID: 252862071063387240, guid: 3ed081a913a1e6d468030b7bf2bd1d69, type: 3}
   firePoint: {fileID: 6896193195914993056}
-  colliderDistance: 1
+  colliderDistance: 6
   boxCollider: {fileID: 4665778068530611605}
   enemyTag: Player1
 --- !u!1 &1821082048749786804

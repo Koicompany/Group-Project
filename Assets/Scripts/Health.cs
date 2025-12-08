@@ -52,21 +52,23 @@ public class Health : MonoBehaviour
     {
         if (spriteRenderer == null) yield break;
 
-        Color originalColor = spriteRenderer.color; // Save the current tint
-
+        Color originalColor = spriteRenderer.color; // Save the original color
         float elapsed = 0f;
-        bool toggle = true;
+        float flashInterval = 0.1f; // Time per flash
 
         while (elapsed < hitFlashDuration)
         {
-            spriteRenderer.color = toggle ? Color.red : originalColor;
-            toggle = !toggle;
-            elapsed += 0.1f;
-            yield return new WaitForSeconds(0.1f);
+            // Alternate between red and white
+            spriteRenderer.color = (Mathf.FloorToInt(elapsed / flashInterval) % 2 == 0) ? Color.red : Color.white;
+
+            elapsed += flashInterval;
+            yield return new WaitForSeconds(flashInterval);
         }
 
-        spriteRenderer.color = originalColor; // Restore original tint
+        // Restore original color
+        spriteRenderer.color = originalColor;
     }
+
 
 
     private void Die()

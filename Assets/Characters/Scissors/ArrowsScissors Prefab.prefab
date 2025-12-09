@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 2609712207309601173}
   - component: {fileID: 4156737562331429822}
   - component: {fileID: 6878820978404500069}
+  - component: {fileID: 6059900971831612661}
   m_Layer: 11
   m_Name: ArrowsScissors Prefab
   m_TagString: Player2
@@ -330,3 +331,19 @@ MonoBehaviour:
   colliderDistance: -1
   boxCollider: {fileID: 7373929387564194960}
   enemyTag: Player1
+--- !u!114 &6059900971831612661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4945375441576478074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5f3c181f442414dbb5cff0e66fd40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashKey: 110
+  dashSpeed: 20
+  dashDuration: 0.15
+  dashCooldown: 1

@@ -110,7 +110,7 @@ public class ScissorsDashAbility : MonoBehaviour
         if (!isDashing) return;
 
         // Preserve vertical velocity so mid-air dash works
-        rb.velocity = new Vector2(dashDirection * dashSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(dashDirection * dashSpeed, rb.linearVelocity.y);
     }
 
     private void HandleTimers()
@@ -139,7 +139,7 @@ public class ScissorsDashAbility : MonoBehaviour
         if (arrowsMovement != null) arrowsMovement.blockJumping = false;
 
         // stop horizontal momentum so player doesn't keep sliding
-        rb.velocity = new Vector2(0f, rb.velocity.y);
+        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
 
         if (debugLogs) Debug.Log("[Dash] End");
     }

@@ -31,6 +31,11 @@ public class Health : MonoBehaviour
         playerScripts = GetComponents<MonoBehaviour>();
     }
 
+    public float GetStartingHealth()
+    {
+        return startingHealth;
+    }
+
     public void TakeDamage(float damage)
     {
         if (dead || invincible) return;

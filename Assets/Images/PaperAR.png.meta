@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: d949f549bf4f5a548a220ed19b8669a3
+guid: 125a34763069d9446bb58b6601a1112d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3462699517564032484
-    second: RPS Characters_0
+      213: 8590269459955624495
+    second: PaperAR_0
   - first:
-      213: -6860263148782472980
-    second: RPS Characters_1
+      213: 4956313091203906470
+    second: PaperAR_1
   - first:
-      213: -4973241349427717486
-    second: RPS Characters_2
+      213: 3370628930930041226
+    second: PaperAR_2
+  - first:
+      213: 8393171573866705605
+    second: PaperAR_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -90,85 +93,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: VisionOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: tvOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -184,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RPS Characters_0
+      name: PaperAR_0
       rect:
         serializedVersion: 2
-        x: 188
-        y: 1168
-        width: 709
-        height: 856
+        x: 1466
+        y: 1842
+        width: 19
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4e512547ddafd0030800000000000000
-      internalID: 3462699517564032484
+      spriteID: f2aaa858f84c63770800000000000000
+      internalID: 8590269459955624495
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPS Characters_1
+      name: PaperAR_1
       rect:
         serializedVersion: 2
-        x: 1231
-        y: 1084
-        width: 737
-        height: 926
+        x: 1485
+        y: 1832
+        width: 13
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ce03e1f63037bc0a0800000000000000
-      internalID: -6860263148782472980
+      spriteID: 6abb3dc2f7c58c440800000000000000
+      internalID: 4956313091203906470
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPS Characters_2
+      name: PaperAR_2
       rect:
         serializedVersion: 2
-        x: 153
-        y: 146
-        width: 695
-        height: 758
+        x: 1112
+        y: 1609
+        width: 6
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,8 +168,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 29a9311975f7bfab0800000000000000
-      internalID: -4973241349427717486
+      spriteID: a816db18721e6ce20800000000000000
+      internalID: 3370628930930041226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PaperAR_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 694
+        height: 757
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c23b37d3198a7470800000000000000
+      internalID: 8393171573866705605
       vertices: []
       indices: 
       edges: []
@@ -263,9 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      RPS Characters_0: 3462699517564032484
-      RPS Characters_1: -6860263148782472980
-      RPS Characters_2: -4973241349427717486
+      PaperAR_0: 8590269459955624495
+      PaperAR_1: 4956313091203906470
+      PaperAR_2: 3370628930930041226
+      PaperAR_3: 8393171573866705605
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,11 +1,18 @@
 using UnityEngine;
 
-public class _rockDebug : MonoBehaviour
+public class _rockDebug : DefaultObserverEventHandler
 {
-    //debug to know that the image was seen by vuforia
-    void Start()
+    protected override void OnTrackingFound()
     {
-        Debug.Log("Vuforia image target recognized");
+        base.OnTrackingFound();
+        Debug.Log("Dog found!");
+        // Custom behavior for Dog here
+    }
+
+    protected override void OnTrackingLost()
+    {
+        base.OnTrackingLost();
+        Debug.Log("Dog lost!");
     }
 
 }

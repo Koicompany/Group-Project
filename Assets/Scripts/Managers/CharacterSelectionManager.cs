@@ -115,7 +115,7 @@ public class CharacterSelectionManager : MonoBehaviour
     }
 
     // Helper function to toggle sprites: only enable the one at the selected index
-    private void UpdateSpriteVisibility(SpriteRenderer[] sprites, int activeIndex)
+    public void UpdateSpriteVisibility(SpriteRenderer[] sprites, int activeIndex)
     {
         for (int i = 0; i < sprites.Length; i++)
         {

@@ -575,6 +575,7 @@ MonoBehaviour:
     m_PersistentCalls:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       m_Calls: []
   OnTargetLost:
     m_PersistentCalls:
@@ -586,6 +587,8 @@ MonoBehaviour:
 =======
 >>>>>>> Stashed changes
 <<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
       m_Calls:
       - m_Target: {fileID: 11500000, guid: 60719b80c6fbe8b4798138a82c0c4b82, type: 3}
         m_TargetAssemblyTypeName: 
@@ -672,6 +675,7 @@ MonoBehaviour:
   mHiddenRoot: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   mTargetName: rockar1
   mDatasetName: Vuforia/RockPaperScisors.xml
 =======
@@ -679,6 +683,8 @@ MonoBehaviour:
 =======
 >>>>>>> Stashed changes
 <<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
   mTargetName: RockAR
 =======
   mTargetName: 
@@ -852,6 +858,7 @@ MonoBehaviour:
   mHiddenRoot: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   mTargetName: paperar1
   mDatasetName: Vuforia/RockPaperScisors.xml
   mCastedBehaviour: {fileID: 438555020}
@@ -862,6 +869,8 @@ MonoBehaviour:
 =======
 >>>>>>> Stashed changes
 <<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
   mTargetName: PaperAR
 =======
   mTargetName: 
@@ -876,6 +885,9 @@ MonoBehaviour:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -957,6 +969,8 @@ CanvasRenderer:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -1049,10 +1063,13 @@ Camera:
   far clip plane: 2000
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   field of view: 26.991467
 =======
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
   field of view: 26.991467
 =======
   field of view: 1.1501204
@@ -1061,6 +1078,9 @@ Camera:
   field of view: 1.1501204
 >>>>>>> Stashed changes
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -1468,6 +1488,7 @@ MonoBehaviour:
   mHiddenRoot: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   mTargetName: scisorsar1
   mDatasetName: Vuforia/RockPaperScisors.xml
 =======
@@ -1475,6 +1496,8 @@ MonoBehaviour:
 =======
 >>>>>>> Stashed changes
 <<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
   mTargetName: ScisorsAR
 =======
   mTargetName: 

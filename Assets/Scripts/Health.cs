@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class Health : MonoBehaviour
@@ -7,40 +7,50 @@ public class Health : MonoBehaviour
 
     [Header("Health")]
     [SerializeField] private float startingHealth = 100f;
-    [SerializeField] private float deathDelay = 1.2f;  // time before despawning
-    [SerializeField] private float hitFlashDuration = 1f; // duration of red/white flash
+    [SerializeField] private float deathDelay = 1.2f;
+    [SerializeField] private float hitFlashDuration = 1f;
 
     public float currentHealth { get; private set; }
+
+    // EVENTS
+    public event System.Action<float> OnDamageTaken;
+    public static event System.Action<string, float> OnAnyPlayerDamaged;
 
     private Animator anim;
     private bool dead = false;
     private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
-
-    // Store all scripts that should disable upon death
     private MonoBehaviour[] playerScripts;
+
+    private Color baseColor;
 
     private void Awake()
     {
         currentHealth = startingHealth;
+
         boxCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Cache every script on the player EXCEPT this one
+        // Cache the initial tint (e.g., player 1 or 2)
+        baseColor = spriteRenderer.color;
+
         playerScripts = GetComponents<MonoBehaviour>();
     }
 
-    public float GetStartingHealth()
-    {
-        return startingHealth;
-    }
+    public float GetStartingHealth() => startingHealth;
 
     public void TakeDamage(float damage)
     {
         if (dead || invincible) return;
 
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
+
+        // This character took damage
+        OnDamageTaken?.Invoke(damage);
+
+        // Inform ALL listeners that a player (with this tag) was damaged
+        OnAnyPlayerDamaged?.Invoke(gameObject.tag, damage);
 
         if (currentHealth > 0)
         {
@@ -57,31 +67,30 @@ public class Health : MonoBehaviour
     {
         if (spriteRenderer == null) yield break;
 
-        Color originalColor = spriteRenderer.color; // Save the original color
         float elapsed = 0f;
-        float flashInterval = 0.1f; // Time per flash
+        float flashInterval = 0.1f;
 
         while (elapsed < hitFlashDuration)
         {
-            // Alternate between red and white
-            spriteRenderer.color = (Mathf.FloorToInt(elapsed / flashInterval) % 2 == 0) ? Color.red : Color.white;
+            // Alternate between red and the player's base color
+            spriteRenderer.color =
+                (Mathf.FloorToInt(elapsed / flashInterval) % 2 == 0) ? Color.red : baseColor;
 
             elapsed += flashInterval;
             yield return new WaitForSeconds(flashInterval);
         }
 
-        // Restore original color
-        spriteRenderer.color = originalColor;
+        // Ensure we end with the player's base color
+        spriteRenderer.color = baseColor;
     }
-
 
 
     private void Die()
     {
         dead = true;
-
         anim.SetTrigger("die");
 
+        // Disable all scripts except this one
         foreach (var script in playerScripts)
         {
             if (script != this)

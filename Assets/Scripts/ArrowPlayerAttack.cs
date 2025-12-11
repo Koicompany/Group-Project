@@ -94,14 +94,12 @@ public class ArrowPlayerAttack : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (boxCollider == null)
-            return;
+        if (boxCollider == null) return;
 
         Gizmos.color = Color.red;
 
         // Calculate the cast box position & size (matching your BoxCast)
-        Vector3 castCenter = boxCollider.bounds.center
-                             + transform.right * range * transform.localScale.x * colliderDistance;
+        Vector3 castCenter = boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance;
 
         Vector3 castSize = new Vector3(
             boxCollider.bounds.size.x * range,
@@ -129,7 +127,6 @@ public class ArrowPlayerAttack : MonoBehaviour
             Debug.LogWarning("Projectile prefab or firePoint not set!");
             return null;
         }
-
         return Instantiate(projectile, firePoint.position, Quaternion.identity);
     }
 }

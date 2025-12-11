@@ -573,12 +573,87 @@ MonoBehaviour:
     m_RotationOrder: 4
   OnTargetFound:
     m_PersistentCalls:
+<<<<<<< Updated upstream
       m_Calls: []
   OnTargetLost:
     m_PersistentCalls:
       m_Calls: []
   characterIndex: 0
 --- !u!114 &371665926
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 60719b80c6fbe8b4798138a82c0c4b82, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+=======
+      m_Calls: []
+>>>>>>> Stashed changes
+=======
+      m_Calls: []
+>>>>>>> Stashed changes
+  OnTargetLost:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 60719b80c6fbe8b4798138a82c0c4b82, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &371665924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371665920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1631628248, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviewVisible: 1
+  RuntimeOcclusion: 0
+  RuntimeCollider: 0
+  mTrackableName: 
+  mInitializedInEditor: 0
+  mDataSetPath: 
+  mAspectRatio: 1
+  mImageTargetType: 2147483647
+  mWidth: 0
+  mHeight: 0
+  mRuntimeTexture: {fileID: 0}
+  mMotionHint: 1
+  mTrackingOptimization: 0
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+  mTrackingOptimizationNeedsUpgrade: 0
+=======
+  mTrackingOptimizationNeedsUpgrade: 1
+>>>>>>> Stashed changes
+=======
+  mTrackingOptimizationNeedsUpgrade: 1
+>>>>>>> Stashed changes
+  mPreview: {fileID: 371665925}
+--- !u!114 &371665925
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -592,8 +667,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 371665924}
   mHiddenRoot: {fileID: 0}
+<<<<<<< Updated upstream
   mTargetName: rockar1
   mDatasetName: Vuforia/RockPaperScisors.xml
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+  mTargetName: RockAR
+=======
+  mTargetName: 
+>>>>>>> Stashed changes
+=======
+  mTargetName: 
+>>>>>>> Stashed changes
+  mDatasetName: 
+>>>>>>> Stashed changes
   mCastedBehaviour: {fileID: 371665924}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
@@ -702,8 +790,47 @@ MonoBehaviour:
   OnTargetLost:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< Updated upstream
   characterIndex: 2
 --- !u!114 &438555022
+=======
+--- !u!114 &438555020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438555016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1631628248, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviewVisible: 1
+  RuntimeOcclusion: 0
+  RuntimeCollider: 0
+  mTrackableName: 
+  mInitializedInEditor: 0
+  mDataSetPath: 
+  mAspectRatio: 1
+  mImageTargetType: 2147483647
+  mWidth: 0
+  mHeight: 0
+  mRuntimeTexture: {fileID: 0}
+  mMotionHint: 1
+  mTrackingOptimization: 0
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+  mTrackingOptimizationNeedsUpgrade: 0
+=======
+  mTrackingOptimizationNeedsUpgrade: 1
+>>>>>>> Stashed changes
+=======
+  mTrackingOptimizationNeedsUpgrade: 1
+>>>>>>> Stashed changes
+  mPreview: {fileID: 438555021}
+--- !u!114 &438555021
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -717,11 +844,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 438555020}
   mHiddenRoot: {fileID: 0}
+<<<<<<< Updated upstream
   mTargetName: paperar1
   mDatasetName: Vuforia/RockPaperScisors.xml
   mCastedBehaviour: {fileID: 438555020}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+  mTargetName: PaperAR
+=======
+  mTargetName: 
+>>>>>>> Stashed changes
+=======
+  mTargetName: 
+>>>>>>> Stashed changes
+  mDatasetName: 
+  mCastedBehaviour: {fileID: 438555020}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
 --- !u!1 &927316813
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,6 +939,13 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927316813}
   m_CullTransparentMesh: 1
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 --- !u!1 &941757889
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,7 +1033,19 @@ Camera:
     height: 1
   near clip plane: 0.05
   far clip plane: 2000
+<<<<<<< Updated upstream
   field of view: 26.991467
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+  field of view: 26.991467
+=======
+  field of view: 1.1501204
+>>>>>>> Stashed changes
+=======
+  field of view: 1.1501204
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   orthographic: 0
   orthographic size: 5
   m_Depth: 1
@@ -1230,8 +1394,47 @@ MonoBehaviour:
   OnTargetLost:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< Updated upstream
   characterIndex: 1
 --- !u!114 &1230067457
+=======
+--- !u!114 &1230067455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230067451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1631628248, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviewVisible: 1
+  RuntimeOcclusion: 0
+  RuntimeCollider: 0
+  mTrackableName: 
+  mInitializedInEditor: 0
+  mDataSetPath: 
+  mAspectRatio: 1
+  mImageTargetType: 2147483647
+  mWidth: 0
+  mHeight: 0
+  mRuntimeTexture: {fileID: 0}
+  mMotionHint: 1
+  mTrackingOptimization: 0
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+  mTrackingOptimizationNeedsUpgrade: 0
+=======
+  mTrackingOptimizationNeedsUpgrade: 1
+>>>>>>> Stashed changes
+=======
+  mTrackingOptimizationNeedsUpgrade: 1
+>>>>>>> Stashed changes
+  mPreview: {fileID: 1230067456}
+--- !u!114 &1230067456
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1245,8 +1448,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 1230067455}
   mHiddenRoot: {fileID: 0}
+<<<<<<< Updated upstream
   mTargetName: scisorsar1
   mDatasetName: Vuforia/RockPaperScisors.xml
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+  mTargetName: ScisorsAR
+=======
+  mTargetName: 
+>>>>>>> Stashed changes
+=======
+  mTargetName: 
+>>>>>>> Stashed changes
+  mDatasetName: 
+>>>>>>> Stashed changes
   mCastedBehaviour: {fileID: 1230067455}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}

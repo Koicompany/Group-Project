@@ -17,7 +17,7 @@ public class GolemRollAbility : MonoBehaviour
     [SerializeField] private BoxCollider2D normalCollider;
 
     [Header("Roll Damage")]
-    [SerializeField] private float rollDamage = 25f;   // damage dealt on collision while rolling
+    [SerializeField] private float rollDamage = 25f;
 
     private WASD wasdMovement;
     private Arrows arrowMovement;
@@ -32,8 +32,12 @@ public class GolemRollAbility : MonoBehaviour
     private float rollTimer = 0f;
     private float cooldownTimer = 0f;
 
-    // Prevents hitting the same enemy multiple times per roll
+    // Prevent hitting the same enemy multiple times per roll
     private HashSet<Health> damagedTargets = new HashSet<Health>();
+
+    // PUBLIC PROPERTIES
+    public bool IsRolling => isRolling;
+    public bool CanAct => !isRolling && !rollingWindup;
 
     private void Awake()
     {
@@ -53,7 +57,21 @@ public class GolemRollAbility : MonoBehaviour
         HandleRollTimers();
         HandleRollInput();
         RotateWhileRolling();
+        CheckInterruptRoll();
     }
+
+    private void CheckInterruptRoll()
+    {
+        if (!isRolling) return;
+
+        // If any attack key is pressed, exit the roll immediately
+        if (Input.GetKeyDown(KeyCode.T) || Input.GetKeyDown(KeyCode.Y) ||
+            Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Comma))
+        {
+            ExitBallForm(); // leave roll immediately
+        }
+    }
+
 
     private void HandleRollInput()
     {
@@ -97,7 +115,7 @@ public class GolemRollAbility : MonoBehaviour
 
         Debug.Log("ROLL START!");
 
-        damagedTargets.Clear(); // reset hit list
+        damagedTargets.Clear();
 
         if (health != null) health.invincible = true;
 
@@ -172,7 +190,6 @@ public class GolemRollAbility : MonoBehaviour
         }
     }
 
-    // DAMAGE HANDLER — called whenever ballCollider hits something
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!isRolling) return;
@@ -181,7 +198,7 @@ public class GolemRollAbility : MonoBehaviour
 
         if (targetHealth != null && !damagedTargets.Contains(targetHealth))
         {
-            damagedTargets.Add(targetHealth); // prevent repeat hits
+            damagedTargets.Add(targetHealth);
             targetHealth.TakeDamage(rollDamage);
 
             Debug.Log("ROLL HIT! Damaged: " + collision.collider.name);

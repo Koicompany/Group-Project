@@ -1,8 +1,12 @@
 using UnityEngine;
+using System;
 using System.Collections;
 
 public class Health : MonoBehaviour
 {
+    public static event Action<string, float> OnAnyPlayerDamaged;
+    public event Action<float> OnDamageTaken;
+
     [HideInInspector] public bool invincible = false;
 
     [Header("Health")]
@@ -41,6 +45,9 @@ public class Health : MonoBehaviour
         if (dead || invincible) return;
 
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
+
+        OnDamageTaken?.Invoke(damage);
+        OnAnyPlayerDamaged?.Invoke(gameObject.tag, damage);
 
         if (currentHealth > 0)
         {

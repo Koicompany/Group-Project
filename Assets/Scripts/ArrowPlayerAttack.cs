@@ -112,7 +112,7 @@ public class ArrowPlayerAttack : MonoBehaviour
         Gizmos.DrawWireCube(castCenter, castSize);
     }
 
-    private void FireProjectile()
+    public void FireProjectile()
     {
         GameObject newProjectile = FindProjectile();
         if (newProjectile != null)

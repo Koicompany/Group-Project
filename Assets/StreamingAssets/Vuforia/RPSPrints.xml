@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="distinctscissor" size="1.000000 1.362193" />
+    <ImageTarget name="p2_arscissor" size="1.000000 1.362193" />
+    <ImageTarget name="p2_arpaper" size="1.000000 1.362590" />
+    <ImageTarget name="p2_arrock" size="1.000000 1.379765" />
+    <ImageTarget name="p1_arscissor" size="1.000000 1.395714" />
+    <ImageTarget name="p1_arpaper" size="1.000000 1.350852" />
+    <ImageTarget name="p1_arrock" size="1.000000 1.368960" />
+  </Tracking>
+</QCARConfig>

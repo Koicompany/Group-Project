@@ -21,6 +21,7 @@ public class Projectile : MonoBehaviour
 
     public void ActivateProjectile()
     {
+        Debug.Log("Projectile Activated");
         hit = false;
         lifetime = 0;
         gameObject.SetActive(true);

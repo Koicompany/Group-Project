@@ -114,6 +114,7 @@ public class WASDPlayerAttack : MonoBehaviour
 
     public void FireProjectile()
     {
+        Debug.Log("attack or ult");
         GameObject newProjectile = FindProjectile();
         if (newProjectile != null)
         {

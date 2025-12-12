@@ -84,7 +84,7 @@ public class ScissorsDashAbility : MonoBehaviour
         }
     }
 
-    private void StartDash()
+    public void StartDash()
     {
         isDashing = true;
         dashTimer = dashDuration;

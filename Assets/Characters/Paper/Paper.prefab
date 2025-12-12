@@ -151,7 +151,6 @@ MonoBehaviour:
   speed: 15
   resetTime: 3
   projectileDmg: 10
-  isNativeLeftFacing: 0
 --- !u!95 &4472747718989311240
 Animator:
   serializedVersion: 7

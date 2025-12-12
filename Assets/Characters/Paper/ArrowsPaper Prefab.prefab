@@ -439,6 +439,7 @@ MonoBehaviour:
   startingHealth: 150
   deathDelay: 0.5
   hitFlashDuration: 1
+  currentHealth: 0
 --- !u!114 &5973243900124294326
 MonoBehaviour:
   m_ObjectHideFlags: 0

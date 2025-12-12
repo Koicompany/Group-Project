@@ -22,14 +22,9 @@ public class Health : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private MonoBehaviour[] playerScripts;
 
-  
-    private Color baseColor;          
-    private Coroutine flashRoutine;   
-
-    public float GetStartingHealth()
-    {
-        return startingHealth;
-    }
+    // --- New fields ---
+    private Color baseColor;          // <--- store the real tint
+    private Coroutine flashRoutine;   // <--- track active flash
 
     private void Awake()
     {
@@ -38,7 +33,7 @@ public class Health : MonoBehaviour
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        baseColor = spriteRenderer.color; 
+        baseColor = spriteRenderer.color; // <--- capture initial tint
 
         playerScripts = GetComponents<MonoBehaviour>();
     }
@@ -89,6 +84,10 @@ public class Health : MonoBehaviour
         // Final restore (just in case)
         spriteRenderer.color = baseColor;
         flashRoutine = null;
+    }
+    public float GetStartingHealth()
+    {
+        return startingHealth;
     }
 
     private void Die()

@@ -335,6 +335,7 @@ MonoBehaviour:
   startingHealth: 200
   deathDelay: 1.2
   hitFlashDuration: 1
+  currentHealth: 0
 --- !u!114 &2976437555839696008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +359,6 @@ MonoBehaviour:
   colliderDistance: 6
   boxCollider: {fileID: 4665778068530611605}
   enemyTag: Player1
-  rollAbility: {fileID: 0}
 --- !u!1 &1821082048749786804
 GameObject:
   m_ObjectHideFlags: 0

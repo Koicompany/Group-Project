@@ -89,23 +89,21 @@ public class ChargeMeter : MonoBehaviour
     {
         currentCharge = Mathf.Clamp(currentCharge + amount, 0f, maxCharge);
 
-        // Only trigger AR if not already triggered
         if (!arTriggered && currentCharge >= maxCharge)
         {
-            arTriggered = true; // set first to prevent duplicate coroutines
+            arTriggered = true;
             StartCoroutine(ActivateARCameraWithTimer());
         }
     }
 
     private IEnumerator ActivateARCameraWithTimer()
     {
-        // Activate camera and its display
         if (arCameraObject != null)
             arCameraObject.SetActive(true);
+
         if (arDisplayObject != null)
             arDisplayObject.SetActive(true);
 
-        // Activate the TMP countdown text
         if (timerText != null)
             timerText.gameObject.SetActive(true);
 
@@ -114,17 +112,18 @@ public class ChargeMeter : MonoBehaviour
         while (remainingTime > 0f)
         {
             if (timerText != null)
-                timerText.text = remainingTime.ToString("F1"); // Single countdown timer
+                timerText.text = remainingTime.ToString("F1");
 
             remainingTime -= Time.deltaTime;
             yield return null;
         }
 
-        // Deactivate everything after the countdown
         if (arCameraObject != null)
             arCameraObject.SetActive(false);
+
         if (arDisplayObject != null)
             arDisplayObject.SetActive(false);
+
         if (timerText != null)
         {
             timerText.text = "";
@@ -134,5 +133,4 @@ public class ChargeMeter : MonoBehaviour
         currentCharge = 0f;
         arTriggered = false;
     }
-
 }

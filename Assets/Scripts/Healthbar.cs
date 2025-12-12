@@ -1,48 +1,70 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Healthbar : MonoBehaviour
 {
-    [SerializeField] private string targetPlayerTag = "Player1";
+    [SerializeField] private string targetPlayerTag;
+
+    [SerializeField] private Image HealthbarTotal;
     [SerializeField] private Image HealthbarCurrent;
 
     private Health playerHealth;
     private float maxHealth;
+    private bool isTracking = false;
 
     private void Start()
     {
-        InvokeRepeating(nameof(TryFindPlayer), 0f, 0.25f);
+        // Try to find the player immediately, and start tracking if not found
+        StartCoroutine(FindAndTrackPlayer());
     }
 
-    void TryFindPlayer()
+    private IEnumerator FindAndTrackPlayer()
     {
-        if (playerHealth != null) return;
-
-        GameObject player = GameObject.FindWithTag(targetPlayerTag);
-
-        if (player != null)
+        while (!isTracking)
         {
-            playerHealth = player.GetComponent<Health>();
-
-            if (playerHealth != null)
+            GameObject player = GameObject.FindWithTag(targetPlayerTag);
+            if (player != null)
             {
-                maxHealth = playerHealth.GetStartingHealth();
-                UpdateHealthDisplay();
-                CancelInvoke(nameof(TryFindPlayer));
+                playerHealth = player.GetComponent<Health>();
+                if (playerHealth != null)
+                {
+                    maxHealth = playerHealth.GetStartingHealth();
+
+
+                    // Subscribe to damage event
+                    playerHealth.OnDamageTaken += OnHealthChanged;
+
+                    // Initialize the health bar
+                    if (HealthbarTotal != null) HealthbarTotal.fillAmount = 1f;
+                    UpdateHealthDisplay();
+
+                    isTracking = true;
+                    yield break; // stop the coroutine once tracking starts
+                }
             }
+
+            // Wait a short time before trying again
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
-    private void Update()
+    private void OnDestroy()
     {
-        if (playerHealth == null || maxHealth <= 0) return;
-
-        HealthbarCurrent.fillAmount = playerHealth.currentHealth / maxHealth;
+        if (playerHealth != null)
+        {
+            playerHealth.OnDamageTaken -= OnHealthChanged;
+        }
     }
 
-    private void UpdateHealthDisplay()
+    private void OnHealthChanged(float damage)
     {
-        if (playerHealth != null && maxHealth > 0)
+        UpdateHealthDisplay();
+    }
+
+    public void UpdateHealthDisplay()
+    {
+        if (playerHealth != null && maxHealth > 0 && HealthbarCurrent != null)
         {
             HealthbarCurrent.fillAmount = playerHealth.currentHealth / maxHealth;
         }

@@ -325,10 +325,10 @@ MonoBehaviour:
   attackCooldown: 1
   projectileCooldown: 1
   meleeDelay: 0.44
-  projectileDelay: 0.5
+  projectileDelay: 0.3
   range: 2.5
   damage: 10
-  projectile: {fileID: 711601824035859037, guid: 9eb99e53f153dce4398e29abf834b628, type: 3}
+  projectile: {fileID: 517809669389151437, guid: 9eb99e53f153dce4398e29abf834b628, type: 3}
   firePoint: {fileID: 9171375619032701430}
   colliderDistance: -1
   boxCollider: {fileID: 7373929387564194960}
@@ -346,11 +346,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashKey: 110
-<<<<<<< HEAD
-  dashSpeed: 15
-  dashDuration: 0.3
-  dashCooldown: 3
-  dashDelayBeforeMove: 0.15
+  dashSpeed: 10
+  dashDuration: 0.5
+  dashCooldown: 2
+  dashDelayBeforeMove: 0.2
   dashDamage: 15
   hitboxRadius: 1
   damageTargets:
@@ -360,11 +359,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   playerLayerName: Player 2
-=======
-  dashSpeed: 20
-  dashDuration: 0.15
-  dashCooldown: 1
-  debugLogs: 0
 --- !u!1 &7092849460351891985
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,4 +488,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb46c26c5e0090f45bba2f0fc062bd9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
->>>>>>> 29fab10228db4b44554c017a253be85a8acb6105

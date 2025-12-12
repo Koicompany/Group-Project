@@ -213,7 +213,7 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: p2_arpaper
+  mTrackableName: distinctpaper
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/RPSPrints.xml
   mAspectRatio: 1.36259
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 10662385}
   mHiddenRoot: {fileID: 0}
-  mTargetName: p2_arpaper
+  mTargetName: distinctpaper
   mDatasetName: Vuforia/RPSPrints.xml
   mCastedBehaviour: {fileID: 10662385}
   mMeshFilter: {fileID: 0}
@@ -1351,7 +1351,7 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: p2_arrock
+  mTrackableName: distinctrock
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/RPSPrints.xml
   mAspectRatio: 1.379765
@@ -1377,7 +1377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 1061601729}
   mHiddenRoot: {fileID: 0}
-  mTargetName: p2_arrock
+  mTargetName: distinctrock
   mDatasetName: Vuforia/RPSPrints.xml
   mCastedBehaviour: {fileID: 1061601729}
   mMeshFilter: {fileID: 0}

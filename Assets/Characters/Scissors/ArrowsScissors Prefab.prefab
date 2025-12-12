@@ -308,6 +308,7 @@ MonoBehaviour:
   startingHealth: 150
   deathDelay: 0.5
   hitFlashDuration: 1
+  currentHealth: 0
 --- !u!114 &6878820978404500069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,10 +324,10 @@ MonoBehaviour:
   attackCooldown: 1
   projectileCooldown: 1
   meleeDelay: 0.44
-  projectileDelay: 0.3
+  projectileDelay: 0.5
   range: 2.5
   damage: 10
-  projectile: {fileID: 517809669389151437, guid: 9eb99e53f153dce4398e29abf834b628, type: 3}
+  projectile: {fileID: 711601824035859037, guid: 9eb99e53f153dce4398e29abf834b628, type: 3}
   firePoint: {fileID: 9171375619032701430}
   colliderDistance: -1
   boxCollider: {fileID: 7373929387564194960}
@@ -344,6 +345,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashKey: 110
-  dashSpeed: 20
-  dashDuration: 0.15
-  dashCooldown: 1
+  dashSpeed: 15
+  dashDuration: 0.3
+  dashCooldown: 3
+  dashDelayBeforeMove: 0.15
+  dashDamage: 15
+  hitboxRadius: 1
+  damageTargets:
+    serializedVersion: 2
+    m_Bits: 1024
+  passThroughLayers:
+    serializedVersion: 2
+    m_Bits: 1024
+  playerLayerName: Player 2

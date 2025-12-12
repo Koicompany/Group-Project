@@ -1,17 +1,28 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-// Run after default so our FixedUpdate can overwrite velocities set by movement scripts
 [DefaultExecutionOrder(1000)]
 public class ScissorsDashAbility : MonoBehaviour
 {
     [Header("Dash Settings")]
-    public KeyCode dashKey = KeyCode.R;     // Set to N for Player 2 prefab
+    public KeyCode dashKey = KeyCode.R;
     public float dashSpeed = 20f;
     public float dashDuration = 0.15f;
     public float dashCooldown = 0.4f;
 
-    [Header("Debug")]
-    public bool debugLogs = false;
+    [Header("Extra Delay Before Dash (ms)")]
+    public float dashDelayBeforeMove = 0.05f;  // << NEW
+
+    [Header("Damage Settings")]
+    public int dashDamage = 15;
+    public float hitboxRadius = 0.7f;
+    public LayerMask damageTargets;
+
+    [Header("Pass-Through Layers")]
+    public LayerMask passThroughLayers;
+
+    [Header("Layers (player's normal layer name)")]
+    public string playerLayerName = "Player";
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -22,12 +33,17 @@ public class ScissorsDashAbility : MonoBehaviour
 
     private bool isDashing = false;
     private bool onCooldown = false;
+    private bool dashDelayActive = false;
 
-    private float dashTimer = 0f;
-    private float cooldownTimer = 0f;
+    private float dashTimer;
+    private float cooldownTimer;
+    private float dashDelayTimer;
 
-    // cached dash direction (1 or -1)
     private int dashDirection = 1;
+
+    private HashSet<Collider2D> alreadyHit = new HashSet<Collider2D>();
+    private List<int> ignoredLayerIndices = new List<int>();
+    private int playerLayer = -1;
 
     private void Awake()
     {
@@ -38,50 +54,52 @@ public class ScissorsDashAbility : MonoBehaviour
         arrowsMovement = GetComponent<Arrows>();
         sizeRestraint = GetComponentInChildren<SizeRestraint>();
 
-        if (rb == null)
-            Debug.LogError("[ScissorsDashAbility] Rigidbody2D missing on " + gameObject.name);
+        playerLayer = LayerMask.NameToLayer(playerLayerName);
+        if (playerLayer == -1)
+            Debug.LogWarning($"[Dash] Player layer '{playerLayerName}' not found.");
     }
 
     private void Update()
     {
-        HandleDashInput();
+        HandleInput();
         HandleTimers();
     }
 
-    private void HandleDashInput()
+    private void HandleInput()
     {
-        if (isDashing || onCooldown) return;
+        if (isDashing || onCooldown || dashDelayActive) return;
 
         if (Input.GetKeyDown(dashKey))
         {
-            // Determine direction preference:
-            // 1) if movement input exists (player actively pushing left/right) use that
-            // 2) otherwise fallback to SizeRestraint facing, inverted to match how your sprite flips
             float horizInput = 0f;
-            if (wasdMovement != null) horizInput = wasdMovement.horizontalInput;
-            else if (arrowsMovement != null) horizInput = arrowsMovement.horizontalInput;
+            if (wasdMovement) horizInput = wasdMovement.horizontalInput;
+            else if (arrowsMovement) horizInput = arrowsMovement.horizontalInput;
 
             if (Mathf.Abs(horizInput) > 0.01f)
-            {
                 dashDirection = horizInput > 0 ? 1 : -1;
-                if (debugLogs) Debug.Log("[Dash] using input direction: " + dashDirection);
-            }
-            else if (sizeRestraint != null)
-            {
-                // You previously needed an inversion for SizeRestraint -> keep that fix:
-                float sx = sizeRestraint.transform.localScale.x;
-                dashDirection = (sx > 0f) ? -1 : 1;
-                if (debugLogs) Debug.Log("[Dash] using SizeRestraint facing (inverted): " + dashDirection + " (scale.x=" + sx + ")");
-            }
+            else if (sizeRestraint)
+                dashDirection = sizeRestraint.transform.localScale.x > 0 ? -1 : 1;
             else
-            {
-                float sx = transform.localScale.x;
-                dashDirection = (sx > 0f) ? 1 : -1; // fallback: normal scale mapping
-                if (debugLogs) Debug.Log("[Dash] using fallback transform scale: " + dashDirection);
-            }
+                dashDirection = transform.localScale.x > 0 ? 1 : -1;
 
-            StartDash();
+            BeginDashDelay();
         }
+    }
+
+    private void BeginDashDelay()
+    {
+        dashDelayActive = true;
+        dashDelayTimer = dashDelayBeforeMove;
+
+        if (anim) anim.SetTrigger("tornado");
+
+        if (wasdMovement) wasdMovement.blockJumping = true;
+        if (arrowsMovement) arrowsMovement.blockJumping = true;
+
+        onCooldown = true;
+        cooldownTimer = dashCooldown;
+
+        alreadyHit.Clear();
     }
 
     private void StartDash()
@@ -89,32 +107,59 @@ public class ScissorsDashAbility : MonoBehaviour
         isDashing = true;
         dashTimer = dashDuration;
 
-        // Play dash animation if present (no error if missing)
-        if (anim) anim.SetTrigger("dash");
-
-        // Optionally block jumping during dash so players can't spam jumps
-        if (wasdMovement != null) wasdMovement.blockJumping = true;
-        if (arrowsMovement != null) arrowsMovement.blockJumping = true;
-
-        // Start cooldown immediately
-        onCooldown = true;
-        cooldownTimer = dashCooldown;
-
-        if (debugLogs) Debug.Log($"[Dash] Start (dir={dashDirection}, speed={dashSpeed}) on {gameObject.name}");
-        // We apply actual velocity in FixedUpdate so it survives movement script writes.
+        // Enable pass-through
+        if (playerLayer != -1)
+        {
+            ignoredLayerIndices.Clear();
+            for (int layer = 0; layer < 32; layer++)
+            {
+                if (((1 << layer) & passThroughLayers) != 0)
+                {
+                    Physics2D.IgnoreLayerCollision(playerLayer, layer, true);
+                    ignoredLayerIndices.Add(layer);
+                }
+            }
+        }
     }
 
-    // Apply physics velocity here so it runs after player's movement scripts (which run earlier in FixedUpdate)
     private void FixedUpdate()
     {
         if (!isDashing) return;
 
-        // Preserve vertical velocity so mid-air dash works
         rb.linearVelocity = new Vector2(dashDirection * dashSpeed, rb.linearVelocity.y);
+
+        DealDamage();
+    }
+
+    private void DealDamage()
+    {
+        var hits = Physics2D.OverlapCircleAll(transform.position, hitboxRadius, damageTargets);
+
+        foreach (var col in hits)
+        {
+            if (col == null) continue;
+            if (alreadyHit.Contains(col)) continue;
+
+            alreadyHit.Add(col);
+
+            var h = col.GetComponent<Health>();
+            if (h != null)
+                h.TakeDamage(dashDamage); // << no knockback version
+        }
     }
 
     private void HandleTimers()
     {
+        if (dashDelayActive)
+        {
+            dashDelayTimer -= Time.deltaTime;
+            if (dashDelayTimer <= 0f)
+            {
+                dashDelayActive = false;
+                StartDash();
+            }
+        }
+
         if (isDashing)
         {
             dashTimer -= Time.deltaTime;
@@ -134,13 +179,21 @@ public class ScissorsDashAbility : MonoBehaviour
     {
         isDashing = false;
 
-        // Re-enable jumping
-        if (wasdMovement != null) wasdMovement.blockJumping = false;
-        if (arrowsMovement != null) arrowsMovement.blockJumping = false;
+        if (wasdMovement) wasdMovement.blockJumping = false;
+        if (arrowsMovement) arrowsMovement.blockJumping = false;
 
-        // stop horizontal momentum so player doesn't keep sliding
         rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
 
-        if (debugLogs) Debug.Log("[Dash] End");
+        foreach (int layer in ignoredLayerIndices)
+            Physics2D.IgnoreLayerCollision(playerLayer, layer, false);
+
+        ignoredLayerIndices.Clear();
+        alreadyHit.Clear();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, hitboxRadius);
     }
 }

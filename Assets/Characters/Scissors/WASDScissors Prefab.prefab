@@ -220,6 +220,7 @@ MonoBehaviour:
   startingHealth: 150
   deathDelay: 0.5
   hitFlashDuration: 1
+  currentHealth: 0
 --- !u!114 &2855252750711978700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,10 +262,10 @@ MonoBehaviour:
   attackCooldown: 1
   projectileCooldown: 1
   meleeDelay: 0.44
-  projectileDelay: 0.3
+  projectileDelay: 0.5
   range: 3.5
   damage: 10
-  projectile: {fileID: 517809669389151437, guid: 9eb99e53f153dce4398e29abf834b628, type: 3}
+  projectile: {fileID: 711601824035859037, guid: 9eb99e53f153dce4398e29abf834b628, type: 3}
   firePoint: {fileID: 2111522560534809931}
   colliderDistance: -1
   boxCollider: {fileID: 9155009328781769169}
@@ -282,9 +283,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashKey: 114
-  dashSpeed: 18
-  dashDuration: 0.15
-  dashCooldown: 1
+  dashSpeed: 15
+  dashDuration: 0.3
+  dashCooldown: 3
+  dashDelayBeforeMove: 0.15
+  dashDamage: 15
+  hitboxRadius: 1
+  damageTargets:
+    serializedVersion: 2
+    m_Bits: 2048
+  passThroughLayers:
+    serializedVersion: 2
+    m_Bits: 2048
+  playerLayerName: Player
 --- !u!1 &6890630662836182825
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +321,7 @@ Transform:
   m_GameObject: {fileID: 6890630662836182825}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.25, y: 0.49, z: 0}
+  m_LocalPosition: {x: -5.25, y: 2.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

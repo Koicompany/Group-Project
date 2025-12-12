@@ -213,13 +213,13 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: p1_arpaper
+  mTrackableName: p2_arpaper
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/RPSPrints.xml
-  mAspectRatio: 1.350852
+  mAspectRatio: 1.36259
   mImageTargetType: 0
   mWidth: 1
-  mHeight: 1.350852
+  mHeight: 1.36259
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 10662385}
   mHiddenRoot: {fileID: 0}
-  mTargetName: p1_arpaper
+  mTargetName: p2_arpaper
   mDatasetName: Vuforia/RPSPrints.xml
   mCastedBehaviour: {fileID: 10662385}
   mMeshFilter: {fileID: 0}
@@ -941,7 +941,7 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: p2_arscissor
+  mTrackableName: distinctscissor
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/RPSPrints.xml
   mAspectRatio: 1.362193
@@ -967,7 +967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 541526658}
   mHiddenRoot: {fileID: 0}
-  mTargetName: p2_arscissor
+  mTargetName: distinctscissor
   mDatasetName: Vuforia/RPSPrints.xml
   mCastedBehaviour: {fileID: 541526658}
   mMeshFilter: {fileID: 0}

@@ -13,6 +13,7 @@ public class InkBlast : MonoBehaviour
 
     public void Fire(string targetTag)
     {
+        Debug.Log("Firing");
         if (laserPrefab == null || firePoints.Count == 0) return;
 
         foreach (Transform firePoint in firePoints)

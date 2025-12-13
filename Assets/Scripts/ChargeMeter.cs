@@ -88,16 +88,17 @@ public class ChargeMeter : MonoBehaviour
         chargeFill.fillAmount = displayedCharge / maxCharge;
     }
 
-    private void HandleDamageTaken(float damage)
-    {
-        AddCharge(damageTakenGain);
+    private void HandleDamageTaken(float damage) 
+    { 
+        AddCharge(damageTakenGain); 
     }
 
     private void HandleGlobalDamage(string damagedTag, float damage)
-    {
+    { 
         if (damagedTag != targetPlayerTag)
-            AddCharge(damageDealtGain);
+            AddCharge(damageDealtGain); 
     }
+
 
     private void AddCharge(float amount)
     {

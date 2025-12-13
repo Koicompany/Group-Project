@@ -23,6 +23,10 @@ public class ChargeMeter : MonoBehaviour
     [SerializeField] private GameObject arDisplayObject;
     [SerializeField] private float arActiveTime = 3f;
 
+    [Header("Animator")]
+    [SerializeField] private Animator animator; // assign your Animator here
+    private readonly int fullHash = Animator.StringToHash("Full");
+
     private float currentCharge;
     private float displayedCharge;
     private bool arTriggered;
@@ -35,7 +39,6 @@ public class ChargeMeter : MonoBehaviour
 
         chargeFill.fillAmount = 0f;
 
-        // Timer text is ALWAYS active — just clear it
         if (timerText != null)
             timerText.text = "";
 
@@ -44,6 +47,9 @@ public class ChargeMeter : MonoBehaviour
 
         if (arDisplayObject != null)
             arDisplayObject.SetActive(false);
+
+        if (animator != null)
+            animator.SetBool(fullHash, false);
 
         InvokeRepeating(nameof(TryFindPlayer), 0f, 0.25f);
         Health.OnAnyPlayerDamaged += HandleGlobalDamage;
@@ -100,6 +106,10 @@ public class ChargeMeter : MonoBehaviour
         if (!arTriggered && currentCharge >= maxCharge)
         {
             arTriggered = true;
+
+            if (animator != null)
+                animator.SetBool(fullHash, true); // FULL = true when max charge
+
             StartCoroutine(ActivateARCameraWithTimer());
         }
     }
@@ -135,5 +145,8 @@ public class ChargeMeter : MonoBehaviour
 
         currentCharge = 0f;
         arTriggered = false;
+
+        if (animator != null)
+            animator.SetBool(fullHash, false); // FULL = false when timer ends
     }
 }

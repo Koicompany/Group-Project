@@ -14,7 +14,9 @@ public class Health : MonoBehaviour
     [SerializeField] private float deathDelay = 1.2f;
     [SerializeField] private float hitFlashDuration = 1f;
 
+    [HideInInspector]
     public float currentHealth;
+
     private bool dead = false;
 
     private BoxCollider2D boxCollider;
@@ -22,19 +24,18 @@ public class Health : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private MonoBehaviour[] playerScripts;
 
-    // --- New fields ---
-    private Color baseColor;          // <--- store the real tint
-    private Coroutine flashRoutine;   // <--- track active flash
+    private Color baseColor;
+    private Coroutine flashRoutine;
 
     private void Awake()
     {
         currentHealth = startingHealth;
+
         boxCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        baseColor = spriteRenderer.color; // <--- capture initial tint
-
+        baseColor = spriteRenderer.color;
         playerScripts = GetComponents<MonoBehaviour>();
     }
 
@@ -51,7 +52,6 @@ public class Health : MonoBehaviour
         {
             anim.SetTrigger("hurt");
 
-            // Stop old flash if already running
             if (flashRoutine != null)
                 StopCoroutine(flashRoutine);
 
@@ -59,7 +59,7 @@ public class Health : MonoBehaviour
         }
         else
         {
-            Die();
+            StartCoroutine(DieRoutine());
         }
     }
 
@@ -70,39 +70,44 @@ public class Health : MonoBehaviour
 
         while (elapsed < hitFlashDuration)
         {
-            // flash red
             spriteRenderer.color = Color.red;
             yield return new WaitForSeconds(interval);
 
-            // back to base tint
             spriteRenderer.color = baseColor;
             yield return new WaitForSeconds(interval);
 
             elapsed += interval * 2f;
         }
 
-        // Final restore (just in case)
         spriteRenderer.color = baseColor;
         flashRoutine = null;
     }
+
+    private IEnumerator DieRoutine()
+    {
+        if (dead) yield break;
+        dead = true;
+
+        // Play death animation
+        anim.SetTrigger("die");
+
+        // Disable gameplay scripts immediately
+        foreach (var script in playerScripts)
+        {
+            if (script != this)
+                script.enabled = false;
+        }
+
+        // Wait for death animation duration
+        yield return new WaitForSeconds(deathDelay);
+
+        // Disable collider and remove object
+        boxCollider.enabled = false;
+        Destroy(gameObject);
+    }
+
     public float GetStartingHealth()
     {
         return startingHealth;
-    }
-
-    private void Die()
-    {
-        if (dead) return;
-        dead = true;
-        anim.SetTrigger("die");
-        boxCollider.enabled = false;
-
-        // Disable other player scripts
-        foreach (var script in playerScripts)
-        {
-            if (script != this) script.enabled = false;
-        }
-
-        Destroy(gameObject, deathDelay);
     }
 }

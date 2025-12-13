@@ -84,7 +84,7 @@ public class Projectile : MonoBehaviour
     {
         if (collision == ownerCollider) return;
 
-        if (!collision.CompareTag("Player1") && !collision.CompareTag("Player2") && !collision.CompareTag("Ground"))
+        if (!collision.CompareTag("Player1") && !collision.CompareTag("Player2"))
             return;
 
         hit = true;

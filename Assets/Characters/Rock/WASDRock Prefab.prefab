@@ -333,7 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invincible: 0
   startingHealth: 200
-  deathDelay: 1.2
+  deathDelay: 0.55
   hitFlashDuration: 1
   currentHealth: 0
 --- !u!114 &3159757688596311465

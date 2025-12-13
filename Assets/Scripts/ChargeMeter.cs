@@ -20,32 +20,47 @@ public class ChargeMeter : MonoBehaviour
 
     [Header("AR Trigger")]
     [SerializeField] private GameObject arCameraObject;
-    [SerializeField] private GameObject arDisplayObject; // Object showing camera feed
+    [SerializeField] private GameObject arDisplayObject;
     [SerializeField] private float arActiveTime = 3f;
 
-    private float currentCharge = 0f;
-    private float displayedCharge = 0f;
-    private bool arTriggered = false;
+    [Header("Animator")]
+    [SerializeField] private Animator animator; // assign your Animator here
+    private readonly int fullHash = Animator.StringToHash("Full");
+
+    private float currentCharge;
+    private float displayedCharge;
+    private bool arTriggered;
     private Health playerHealth;
 
     private void Start()
     {
+        currentCharge = 0f;
         displayedCharge = 0f;
+
         chargeFill.fillAmount = 0f;
 
         if (timerText != null)
             timerText.text = "";
 
-        // Try to find the player repeatedly
-        InvokeRepeating(nameof(TryFindPlayer), 0f, 0.25f);
+        if (arCameraObject != null)
+            arCameraObject.SetActive(false);
 
-        // Listen for global damage events
+        if (arDisplayObject != null)
+            arDisplayObject.SetActive(false);
+
+        if (animator != null)
+            animator.SetBool(fullHash, false);
+
+        InvokeRepeating(nameof(TryFindPlayer), 0f, 0.25f);
         Health.OnAnyPlayerDamaged += HandleGlobalDamage;
     }
 
     private void OnDestroy()
     {
         Health.OnAnyPlayerDamaged -= HandleGlobalDamage;
+
+        if (playerHealth != null)
+            playerHealth.OnDamageTaken -= HandleDamageTaken;
     }
 
     private void TryFindPlayer()
@@ -53,86 +68,86 @@ public class ChargeMeter : MonoBehaviour
         if (playerHealth != null) return;
 
         GameObject player = GameObject.FindWithTag(targetPlayerTag);
-        if (player != null)
-        {
-            playerHealth = player.GetComponent<Health>();
-            if (playerHealth != null)
-            {
-                playerHealth.OnDamageTaken += HandleDamageTaken;
-                CancelInvoke(nameof(TryFindPlayer));
-            }
-        }
+        if (player == null) return;
+
+        playerHealth = player.GetComponent<Health>();
+        if (playerHealth == null) return;
+
+        playerHealth.OnDamageTaken += HandleDamageTaken;
+        CancelInvoke(nameof(TryFindPlayer));
     }
 
     private void Update()
     {
-        // Smoothly animate the fill amount
-        displayedCharge = Mathf.Lerp(displayedCharge, currentCharge, Time.deltaTime * fillSpeed);
+        displayedCharge = Mathf.Lerp(
+            displayedCharge,
+            currentCharge,
+            Time.deltaTime * fillSpeed
+        );
+
         chargeFill.fillAmount = displayedCharge / maxCharge;
     }
 
-    private void HandleDamageTaken(float damage)
-    {
-        AddCharge(damageTakenGain);
+    private void HandleDamageTaken(float damage) 
+    { 
+        AddCharge(damageTakenGain); 
     }
 
     private void HandleGlobalDamage(string damagedTag, float damage)
-    {
-        // If the other player took damage, this player gains charge
+    { 
         if (damagedTag != targetPlayerTag)
-        {
-            AddCharge(damageDealtGain);
-        }
+            AddCharge(damageDealtGain); 
     }
+
 
     private void AddCharge(float amount)
     {
         currentCharge = Mathf.Clamp(currentCharge + amount, 0f, maxCharge);
 
-        // Only trigger AR if not already triggered
         if (!arTriggered && currentCharge >= maxCharge)
         {
-            arTriggered = true; // set first to prevent duplicate coroutines
+            arTriggered = true;
+
+            if (animator != null)
+                animator.SetBool(fullHash, true); // FULL = true when max charge
+
             StartCoroutine(ActivateARCameraWithTimer());
         }
     }
 
     private IEnumerator ActivateARCameraWithTimer()
     {
-        // Activate camera and its display
         if (arCameraObject != null)
             arCameraObject.SetActive(true);
+
         if (arDisplayObject != null)
             arDisplayObject.SetActive(true);
-
-        // Activate the TMP countdown text
-        if (timerText != null)
-            timerText.gameObject.SetActive(true);
 
         float remainingTime = arActiveTime;
 
         while (remainingTime > 0f)
         {
             if (timerText != null)
-                timerText.text = remainingTime.ToString("F1"); // Single countdown timer
+                timerText.text = remainingTime.ToString("F1");
 
             remainingTime -= Time.deltaTime;
             yield return null;
         }
 
-        // Deactivate everything after the countdown
+        // Cleanup
+        if (timerText != null)
+            timerText.text = "";
+
         if (arCameraObject != null)
             arCameraObject.SetActive(false);
+
         if (arDisplayObject != null)
             arDisplayObject.SetActive(false);
-        if (timerText != null)
-        {
-            timerText.text = "";
-            timerText.gameObject.SetActive(false);
-        }
 
         currentCharge = 0f;
         arTriggered = false;
-    }
 
+        if (animator != null)
+            animator.SetBool(fullHash, false); // FULL = false when timer ends
+    }
 }

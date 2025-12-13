@@ -333,8 +333,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invincible: 0
   startingHealth: 200
-  deathDelay: 1.2
+  deathDelay: 0.55
   hitFlashDuration: 1
+  currentHealth: 0
 --- !u!114 &3159757688596311465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +359,6 @@ MonoBehaviour:
   colliderDistance: 6
   boxCollider: {fileID: 7370072891050543969}
   enemyTag: Player2
-  rollAbility: {fileID: 0}
 --- !u!1 &8550107585557126485
 GameObject:
   m_ObjectHideFlags: 0

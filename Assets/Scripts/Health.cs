@@ -11,33 +11,32 @@ public class Health : MonoBehaviour
 
     [Header("Health")]
     [SerializeField] private float startingHealth = 100f;
-    [SerializeField] private float deathDelay = 1.2f;  // time before despawning
-    [SerializeField] private float hitFlashDuration = 1f; // duration of red/white flash
+    [SerializeField] private float deathDelay = 1.2f;
+    [SerializeField] private float hitFlashDuration = 1f;
 
-    public float currentHealth { get; private set; }
+    [HideInInspector]
+    public float currentHealth;
 
-    private Animator anim;
     private bool dead = false;
-    private BoxCollider2D boxCollider;
-    private SpriteRenderer spriteRenderer;
 
-    // Store all scripts that should disable upon death
+    private BoxCollider2D boxCollider;
+    private Animator anim;
+    private SpriteRenderer spriteRenderer;
     private MonoBehaviour[] playerScripts;
+
+    private Color baseColor;
+    private Coroutine flashRoutine;
 
     private void Awake()
     {
         currentHealth = startingHealth;
+
         boxCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Cache every script on the player EXCEPT this one
+        baseColor = spriteRenderer.color;
         playerScripts = GetComponents<MonoBehaviour>();
-    }
-
-    public float GetStartingHealth()
-    {
-        return startingHealth;
     }
 
     public void TakeDamage(float damage)
@@ -52,55 +51,63 @@ public class Health : MonoBehaviour
         if (currentHealth > 0)
         {
             anim.SetTrigger("hurt");
-            StartCoroutine(HitFlash());
+
+            if (flashRoutine != null)
+                StopCoroutine(flashRoutine);
+
+            flashRoutine = StartCoroutine(HitFlash());
         }
         else
         {
-            Die();
+            StartCoroutine(DieRoutine());
         }
     }
 
     private IEnumerator HitFlash()
     {
-        if (spriteRenderer == null) yield break;
-
-        Color originalColor = spriteRenderer.color; // Save the original color
         float elapsed = 0f;
-        float flashInterval = 0.1f; // Time per flash
+        float interval = 0.1f;
 
         while (elapsed < hitFlashDuration)
         {
-            // Alternate between red and white
-            spriteRenderer.color = (Mathf.FloorToInt(elapsed / flashInterval) % 2 == 0) ? Color.red : Color.white;
+            spriteRenderer.color = Color.red;
+            yield return new WaitForSeconds(interval);
 
-            elapsed += flashInterval;
-            yield return new WaitForSeconds(flashInterval);
+            spriteRenderer.color = baseColor;
+            yield return new WaitForSeconds(interval);
+
+            elapsed += interval * 2f;
         }
 
-        // Restore original color
-        spriteRenderer.color = originalColor;
+        spriteRenderer.color = baseColor;
+        flashRoutine = null;
     }
 
-
-
-    private void Die()
+    private IEnumerator DieRoutine()
     {
+        if (dead) yield break;
         dead = true;
 
+        // Play death animation
         anim.SetTrigger("die");
 
+        // Disable gameplay scripts immediately
         foreach (var script in playerScripts)
         {
             if (script != this)
                 script.enabled = false;
         }
 
-        StartCoroutine(DeathSequence());
+        // Wait for death animation duration
+        yield return new WaitForSeconds(deathDelay);
+
+        // Disable collider and remove object
+        boxCollider.enabled = false;
+        Destroy(gameObject);
     }
 
-    private IEnumerator DeathSequence()
+    public float GetStartingHealth()
     {
-        yield return new WaitForSeconds(deathDelay);
-        Destroy(gameObject);
+        return startingHealth;
     }
 }

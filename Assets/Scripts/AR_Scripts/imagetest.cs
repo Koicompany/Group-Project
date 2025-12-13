@@ -6,4 +6,8 @@ public class imagetest : MonoBehaviour
     {
         Debug.Log("imagetest");
     }
- }
+
+
+
+
+}

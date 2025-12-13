@@ -251,8 +251,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invincible: 0
   startingHealth: 150
-  deathDelay: 0.5
+  deathDelay: 0.4
   hitFlashDuration: 1
+  currentHealth: 0
 --- !u!114 &8433748685941256694
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -309,6 +309,7 @@ MonoBehaviour:
   startingHealth: 150
   deathDelay: 0.5
   hitFlashDuration: 1
+  currentHealth: 0
 --- !u!114 &6878820978404500069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,10 +346,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashKey: 110
-  dashSpeed: 20
-  dashDuration: 0.15
-  dashCooldown: 1
-  debugLogs: 0
+  dashSpeed: 10
+  dashDuration: 0.5
+  dashCooldown: 2
+  dashDelayBeforeMove: 0.2
+  dashDamage: 15
+  hitboxRadius: 1
+  damageTargets:
+    serializedVersion: 2
+    m_Bits: 1024
+  passThroughLayers:
+    serializedVersion: 2
+    m_Bits: 1024
+  playerLayerName: Player 2
 --- !u!1 &7092849460351891985
 GameObject:
   m_ObjectHideFlags: 0

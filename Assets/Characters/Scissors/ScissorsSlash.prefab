@@ -173,3 +173,4 @@ MonoBehaviour:
   speed: 15
   resetTime: 3
   projectileDmg: 10
+  moveBackward: 1

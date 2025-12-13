@@ -53,6 +53,19 @@ public class GolemRollAbility : MonoBehaviour
         HandleRollTimers();
         HandleRollInput();
         RotateWhileRolling();
+        CheckInterruptRoll();
+    }
+
+    private void CheckInterruptRoll()
+    {
+        if (!isRolling) return;
+
+        // If any attack key is pressed, exit the roll immediately
+        if (Input.GetKeyDown(KeyCode.T) || Input.GetKeyDown(KeyCode.Y) ||
+            Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Comma))
+        {
+            ExitBallForm(); // leave roll immediately
+        }
     }
 
     private void HandleRollInput()

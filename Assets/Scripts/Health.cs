@@ -103,6 +103,11 @@ public class Health : MonoBehaviour
 
         // Disable collider and remove object
         boxCollider.enabled = false;
+        int winningPlayer = gameObject.tag == "Player1" ? 2 : 1;
+        if (MatchManager.Instance != null)
+        {
+            MatchManager.Instance.RoundOver(winningPlayer);
+        }
         Destroy(gameObject);
     }
 

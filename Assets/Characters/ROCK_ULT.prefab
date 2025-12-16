@@ -47,7 +47,7 @@ MonoBehaviour:
   rockPrefab: {fileID: 4114072115563609476, guid: b57e292e8093c8c4395781d30ff24bf9, type: 3}
   duration: 10
   spawnRate: 0.1
-  damage: 15
+  damage: 30
   minX: -50
   maxX: 150
   spawnY: 20

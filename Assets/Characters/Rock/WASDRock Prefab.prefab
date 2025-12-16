@@ -352,14 +352,14 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: P1_arPaper
+  mTrackableName: p1_arpaper
   mInitializedInEditor: 1
-  mDataSetPath: 
-  mAspectRatio: 1.3508523
-  mImageTargetType: 3
-  mWidth: 0.14805469
-  mHeight: 0.2
-  mRuntimeTexture: {fileID: 2800000, guid: 5900e73ed2bad454e919a247342acd66, type: 3}
+  mDataSetPath: Vuforia/RPSPrints.xml
+  mAspectRatio: 1.350852
+  mImageTargetType: 0
+  mWidth: 1
+  mHeight: 1.350852
+  mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0

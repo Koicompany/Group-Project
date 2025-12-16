@@ -51,17 +51,16 @@ public class UltimateMoveManager : MonoBehaviour
 
     public void ActivateScissorSlash()
     {
-        if (scissorSlashPrefab == null)
+        if (scissorSlashPrefab == null || firePoint == null)
             return;
-
-        bool facingRight = transform.localScale.x >= 0f;
 
         ScissorSlashUltimate slash = Instantiate(
             scissorSlashPrefab,
-            transform.position,
-            Quaternion.identity
+            firePoint.position,
+            firePoint.rotation
         );
 
-        slash.Initialize(enemyTag, facingRight);
+        slash.Initialize(enemyTag);
     }
+
 }

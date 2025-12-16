@@ -86,11 +86,39 @@ public class ArrowPlayerAttack : MonoBehaviour
             0f
         );
 
-        if (hit.collider != null && hit.collider.CompareTag(enemyTag))
+        if (hit.collider != null)
         {
-            hit.collider.GetComponent<Health>()?.TakeDamage(damage);
+            Health enemyHealth = hit.collider.GetComponent<Health>();
+            CharacterID enemyID = hit.collider.GetComponent<CharacterID>();
+
+            if (enemyHealth != null && enemyID != null)
+            {
+                float finalDamage = damage;
+
+                // Apply weakness/advantage modifiers
+                Weakness_Advantages_Manager wam = GetComponent<Weakness_Advantages_Manager>();
+                if (wam != null)
+                {
+                    // If enemy is in strongAgainst list, increase damage
+                    if (System.Array.Exists(wam.strongAgainstNames, n => n == enemyID.characterName))
+                    {
+                        finalDamage += wam.advantageModifier;
+                    }
+
+                    // If enemy is in weakAgainst list, reduce damage
+                    if (System.Array.Exists(wam.weakAgainstNames, n => n == enemyID.characterName))
+                    {
+                        finalDamage -= wam.weaknessModifier;
+                        finalDamage = Mathf.Max(0, finalDamage); // prevent negative damage
+                    }
+                }
+
+                enemyHealth.TakeDamage(finalDamage);
+                Debug.Log($"Damaged {enemyID.characterName} for {finalDamage}");
+            }
         }
     }
+
 
     private void OnDrawGizmosSelected()
     {

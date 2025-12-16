@@ -200,5 +200,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   resetTime: 5
-  projectileDmg: 15
+  projectileDmg: 20
   moveBackward: 0

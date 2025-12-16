@@ -81,6 +81,8 @@ GameObject:
   - component: {fileID: 5973243900124294326}
   - component: {fileID: 8443840985040764658}
   - component: {fileID: 3966771328438802999}
+  - component: {fileID: 3934055105491732305}
+  - component: {fileID: 6634494229034312891}
   m_Layer: 0
   m_Name: ArrowsPaper Prefab
   m_TagString: Player2
@@ -307,7 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincible: 0
-  startingHealth: 250
+  startingHealth: 150
   deathDelay: 0.4
   hitFlashDuration: 1
   currentHealth: 0
@@ -367,6 +369,39 @@ MonoBehaviour:
   inkBlastPrefab: {fileID: 0}
   rockRainPrefab: {fileID: 0}
   scissorSlashPrefab: {fileID: 0}
+--- !u!114 &3934055105491732305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6426787473458590052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c037689ba2e60b34d849826e95f54ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myHealth: {fileID: 3881171735188382939}
+  myID: {fileID: 6634494229034312891}
+  advantageModifier: 400
+  weaknessModifier: 100
+  strongAgainstNames:
+  - rock1
+  weakAgainstNames:
+  - scissors1
+--- !u!114 &6634494229034312891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6426787473458590052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c213ac840ffea478d0cb6d5de7fbc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: paper2
 --- !u!1 &8468246381415174576
 GameObject:
   m_ObjectHideFlags: 0

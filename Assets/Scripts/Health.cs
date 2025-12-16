@@ -115,4 +115,15 @@ public class Health : MonoBehaviour
     {
         return startingHealth;
     }
+
+
+    public void AdjustHealth(float amount)
+    {
+        startingHealth += amount;          // adjust max health
+        currentHealth += amount;           // adjust current health
+        currentHealth = Mathf.Clamp(currentHealth, 0, startingHealth);
+    }
+
+
+
 }

@@ -1,80 +1,65 @@
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class ScissorSlashUltimate : MonoBehaviour
 {
     [Header("Slash Settings")]
     [SerializeField] private float damage = 40f;
-    [SerializeField] private float range = 2.2f;
-    [SerializeField] private float activeTime = 0.15f;
-
-    [Header("Hitbox")]
-    [SerializeField] private Vector2 hitboxSize = new Vector2(2.5f, 1.5f);
-    [SerializeField] private LayerMask playerLayer;
-
-    [Header("Visuals")]
-    [SerializeField] private GameObject slashEffectPrefab;
+    [SerializeField] private float activeTime = 0.15f;      // How long the slash object exists
+    [SerializeField] private float damageDelay = 0.2f;      // Delay before dealing damage
 
     private string enemyTag;
-    private bool facingRight;
+    private HashSet<Health> targets = new HashSet<Health>();
+    private BoxCollider2D boxCollider;
 
-    // CALLED BY UltimateMoveManager
-    public void Initialize(string enemyTag, bool facingRight)
+    public void Initialize(string enemyTag)
     {
         this.enemyTag = enemyTag;
-        this.facingRight = facingRight;
+        boxCollider = GetComponent<BoxCollider2D>();
+        boxCollider.isTrigger = true;
 
-        ApplyFacing();
+        // Start the coroutine for the slash life and delayed damage
         StartCoroutine(SlashRoutine());
-    }
-
-    private void ApplyFacing()
-    {
-        Vector3 scale = transform.localScale;
-        scale.x = facingRight ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
-        transform.localScale = scale;
     }
 
     private IEnumerator SlashRoutine()
     {
-        ExecuteSlash();
+        // Wait for the damage delay before hitting enemies
+        yield return new WaitForSeconds(damageDelay);
 
-        yield return new WaitForSeconds(activeTime);
+        // Apply damage to all targets currently overlapping the slash collider
+        Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, boxCollider.size, 0f);
+        foreach (var hit in hits)
+        {
+            if (hit.CompareTag(enemyTag))
+            {
+                Health health = hit.GetComponent<Health>();
+                if (health != null)
+                {
+                    health.TakeDamage(damage);
+                    Debug.Log($"Delayed damage applied to {hit.name} for {damage}");
+                }
+            }
+        }
+
+        // Keep the visual for the remainder of activeTime if needed
+        float remainingTime = activeTime - damageDelay;
+        if (remainingTime > 0)
+            yield return new WaitForSeconds(remainingTime);
 
         Destroy(gameObject);
     }
 
-    private void ExecuteSlash()
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
     {
-        Vector2 center = (Vector2)transform.position +
-                         (facingRight ? Vector2.right : Vector2.left) * range * 0.5f;
-
-        if (slashEffectPrefab != null)
+        if (TryGetComponent<BoxCollider2D>(out BoxCollider2D bc))
         {
-            Instantiate(
-                slashEffectPrefab,
-                center,
-                Quaternion.identity
-            );
-        }
-
-        Collider2D[] hits = Physics2D.OverlapBoxAll(
-            center,
-            hitboxSize,
-            0f,
-            playerLayer
-        );
-
-        foreach (Collider2D hit in hits)
-        {
-            if (!hit.CompareTag(enemyTag))
-                continue;
-
-            Health health = hit.GetComponent<Health>();
-            if (health != null)
-            {
-                health.TakeDamage(damage);
-            }
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(transform.position, bc.size);
         }
     }
+#endif
 }

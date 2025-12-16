@@ -167,6 +167,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2324229377577975629}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &7015860948657740835
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +304,8 @@ MonoBehaviour:
   mCastedBehaviour: {fileID: 5779594193388771053}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
+=======
+>>>>>>> parent of b7f1915 (Merge branch 'main' of https://github.com/Koicompany/Group-Project)
 --- !u!1 &8047474471585648145
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,8 +348,11 @@ Transform:
   m_Children:
   - {fileID: 8630639730751699928}
   - {fileID: 5225171578301828566}
+<<<<<<< HEAD
   - {fileID: 5323678652886487772}
   - {fileID: 2154308925497061605}
+=======
+>>>>>>> parent of b7f1915 (Merge branch 'main' of https://github.com/Koicompany/Group-Project)
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &7370072891050543969
@@ -647,8 +653,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTag: Player2
+<<<<<<< HEAD
   inkBlastPrefab: {fileID: 0}
   rockRainPrefab: {fileID: 3515519205062930348, guid: 430efb565afe57146a8f5e6355554d0a, type: 3}
+=======
+  inkBlastPrefab: {fileID: 470482756508955674, guid: 1fa8fc2ac71b4f34abd58606566ee5a8, type: 3}
+>>>>>>> parent of b7f1915 (Merge branch 'main' of https://github.com/Koicompany/Group-Project)
 --- !u!1 &8550107585557126485
 GameObject:
   m_ObjectHideFlags: 0

@@ -101,8 +101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32c044022bd3dc4c8816f6f7dbc8037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkLaserPrefab: {fileID: 5213434948166364363}
-  duration: 2.5
+  laserPrefab: {fileID: 5213434948166364363}
+  blastDuration: 2.5
+  firePoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &2830912482040050404
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,8 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 838372219d2092d41b0518ec69e1c0eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerTick: 2
-  tickRate: 0.25
+  damage: 10
 --- !u!212 &4730953806967117503
 SpriteRenderer:
   m_ObjectHideFlags: 0

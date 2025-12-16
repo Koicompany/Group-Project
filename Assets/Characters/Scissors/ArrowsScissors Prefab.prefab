@@ -82,6 +82,7 @@ GameObject:
   - component: {fileID: 6059900971831612661}
   - component: {fileID: 4096290303913322791}
   - component: {fileID: 677227829550882967}
+  - component: {fileID: 3571941490495509179}
   m_Layer: 11
   m_Name: ArrowsScissors Prefab
   m_TagString: Player2
@@ -389,10 +390,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myHealth: {fileID: 4156737562331429822}
-  myID: {fileID: 0}
-  advantageModifier: 300
-  weaknessModifier: 100
+  myID: {fileID: 3571941490495509179}
+  advantageModifier: 100
+  weaknessModifier: -50
   strongAgainstNames:
   - paper1
   weakAgainstNames:
   - rock1
+--- !u!114 &3571941490495509179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4945375441576478074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c213ac840ffea478d0cb6d5de7fbc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: scissors2

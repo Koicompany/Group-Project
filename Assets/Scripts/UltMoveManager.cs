@@ -20,22 +20,22 @@ public class UltimateMoveManager : MonoBehaviour
             Debug.LogError($"[UltimateMoveManager] FirePoint not found on {name}");
     }
 
-    // =========================
     // CALLED BY VUFORIA
-    // =========================
     public void ActivateInkBlast()
     {
-        if (inkBlastPrefab == null || firePoint == null)
+        if (inkBlastPrefab == null)
             return;
 
+        // No need to pass FirePoint anymore
         InkBlast blast = Instantiate(
             inkBlastPrefab,
-            firePoint.position,
-            firePoint.rotation
+            transform.position,
+            transform.rotation
         );
 
-        blast.Initialize(this, firePoint, enemyTag);
+        blast.Initialize(enemyTag); // only pass target tag
     }
+<<<<<<< Updated upstream
     public void ActivateRockRain()
     {
         if (rockRainPrefab == null)
@@ -49,5 +49,9 @@ public class UltimateMoveManager : MonoBehaviour
 
         rain.Initialize(enemyTag);
     }
+=======
+
+
+>>>>>>> Stashed changes
 }
 

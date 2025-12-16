@@ -5,19 +5,16 @@ public class InkBlast : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private InkLaser inkLaserPrefab;
-    [SerializeField] private float duration = 2.5f;
+    [SerializeField] private float duration = 4f;
+
+    [Header("Spawn Point")]
+    [SerializeField] private Transform firePoint; // <-- drag FirePoint here in inspector
 
     private string targetTag;
-    private Transform firePoint;
-    private UltimateMoveManager owner;
 
-    public void Initialize(
-        UltimateMoveManager owner,
-        Transform firePoint,
-        string targetTag)
+    // Initialize with just the target tag
+    public void Initialize(string targetTag)
     {
-        this.owner = owner;
-        this.firePoint = firePoint;
         this.targetTag = targetTag;
 
         Fire();
@@ -26,11 +23,21 @@ public class InkBlast : MonoBehaviour
 
     private void Fire()
     {
+        if (inkLaserPrefab == null)
+            return;
+
+        if (firePoint == null)
+        {
+            Debug.LogWarning("FirePoint not assigned on InkBlast prefab. Using prefab root as fallback.");
+        }
+
+        Vector3 spawnPos = (firePoint != null) ? firePoint.position : transform.position;
+        Quaternion spawnRot = (firePoint != null) ? firePoint.rotation : transform.rotation;
+
         InkLaser laser = Instantiate(
             inkLaserPrefab,
-            firePoint.position,
-            firePoint.rotation,
-            transform
+            spawnPos,
+            spawnRot
         );
 
         laser.Initialize(targetTag);

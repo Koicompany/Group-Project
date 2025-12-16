@@ -12,11 +12,8 @@ public class UltimateMoveManager : MonoBehaviour
 
     private void Awake()
     {
-        // Cache FirePoint safely
         firePoint = transform.Find("FirePoint");
 
-        if (firePoint == null)
-            Debug.LogError($"[UltimateMoveManager] FirePoint not found on {name}");
     }
 
     // CALLED BY VUFORIA
@@ -25,15 +22,17 @@ public class UltimateMoveManager : MonoBehaviour
         if (inkBlastPrefab == null)
             return;
 
-        // No need to pass FirePoint anymore
+        bool facingRight = transform.localScale.x >= 0f;
+
         InkBlast blast = Instantiate(
             inkBlastPrefab,
             transform.position,
-            transform.rotation
+            Quaternion.identity
         );
 
-        blast.Initialize(enemyTag); // only pass target tag
+        blast.Initialize(enemyTag, facingRight);
     }
+
 
 
 }

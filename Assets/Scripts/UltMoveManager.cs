@@ -8,6 +8,8 @@ public class UltimateMoveManager : MonoBehaviour
     [Header("Ultimate Moves")]
     [SerializeField] private InkBlast inkBlastPrefab;
     [SerializeField] private RockRainUltimate rockRainPrefab;
+    [SerializeField] private ScissorSlashUltimate scissorSlashPrefab;
+
 
     private Transform firePoint;
 
@@ -47,5 +49,19 @@ public class UltimateMoveManager : MonoBehaviour
         rain.Initialize(enemyTag);
     }
 
+    public void ActivateScissorSlash()
+    {
+        if (scissorSlashPrefab == null)
+            return;
 
+        bool facingRight = transform.localScale.x >= 0f;
+
+        ScissorSlashUltimate slash = Instantiate(
+            scissorSlashPrefab,
+            transform.position,
+            Quaternion.identity
+        );
+
+        slash.Initialize(enemyTag, facingRight);
+    }
 }

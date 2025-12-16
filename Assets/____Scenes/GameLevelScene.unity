@@ -797,13 +797,14 @@ GameObject:
   - component: {fileID: 370404058}
   - component: {fileID: 370404057}
   - component: {fileID: 370404056}
+  - component: {fileID: 370404059}
   m_Layer: 0
   m_Name: P2_ULT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &370404055
 Transform:
   m_ObjectHideFlags: 0
@@ -902,18 +903,37 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: p1_arscissor
+  mTrackableName: distinctpaper
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/RPSPrints.xml
-  mAspectRatio: 1.395714
+  mAspectRatio: 1.36259
   mImageTargetType: 0
   mWidth: 1
-  mHeight: 1.395714
+  mHeight: 1.36259
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 0}
+  mPreview: {fileID: 370404059}
+--- !u!114 &370404059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370404054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 370404058}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: distinctpaper
+  mDatasetName: Vuforia/RPSPrints.xml
+  mCastedBehaviour: {fileID: 370404058}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
 --- !u!1 &430081254
 GameObject:
   m_ObjectHideFlags: 0
@@ -3716,14 +3736,14 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: P1_arPaper
+  mTrackableName: p1_arpaper
   mInitializedInEditor: 1
-  mDataSetPath: 
-  mAspectRatio: 1.3508523
-  mImageTargetType: 3
-  mWidth: 0.14805469
-  mHeight: 0.2
-  mRuntimeTexture: {fileID: 2800000, guid: 5900e73ed2bad454e919a247342acd66, type: 3}
+  mDataSetPath: Vuforia/RPSPrints.xml
+  mAspectRatio: 1.350852
+  mImageTargetType: 0
+  mWidth: 1
+  mHeight: 1.350852
+  mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
@@ -3742,8 +3762,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 1806071434}
   mHiddenRoot: {fileID: 0}
-  mTargetName: P1_arPaper
-  mDatasetName: 
+  mTargetName: p1_arpaper
+  mDatasetName: Vuforia/RPSPrints.xml
   mCastedBehaviour: {fileID: 1806071434}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}

@@ -351,7 +351,7 @@ MonoBehaviour:
   dashDuration: 0.5
   dashCooldown: 2
   dashDelayBeforeMove: 0.2
-  dashDamage: 15
+  dashDamage: 20
   hitboxRadius: 1
   damageTargets:
     serializedVersion: 2
@@ -374,6 +374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTag: Player1
   inkBlastPrefab: {fileID: 0}
+  rockRainPrefab: {fileID: 0}
+  scissorSlashPrefab: {fileID: 0}
 --- !u!1 &7092849460351891985
 GameObject:
   m_ObjectHideFlags: 0

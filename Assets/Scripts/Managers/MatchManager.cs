@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MatchManager : MonoBehaviour
@@ -9,8 +9,9 @@ public class MatchManager : MonoBehaviour
     public int maxWins = 2; // Best of 3
 
     [Header("Scene Names")]
-    public string characterSelectScene = "CharacterSelectScene";
+    public string characterSelectScene = "CharacterSelect";
     public string gameScene = "GameLevelScene";
+    public string winScene = "YouWIn"; // NEW
 
     [Header("Match State")]
     public int p1Wins = 0;
@@ -30,6 +31,7 @@ public class MatchManager : MonoBehaviour
         }
     }
 
+    /// Call this when a round ends
     public void RoundOver(int winningPlayer)
     {
         lastRoundWinner = winningPlayer;
@@ -37,18 +39,28 @@ public class MatchManager : MonoBehaviour
         if (winningPlayer == 1) p1Wins++;
         else if (winningPlayer == 2) p2Wins++;
 
-        Debug.Log($"Round Over ? P1: {p1Wins}, P2: {p2Wins}");
+        Debug.Log($"Round Over → P1: {p1Wins}, P2: {p2Wins}");
 
-        if (p1Wins >= maxWins || p2Wins >= maxWins)
+        if (IsMatchOver())
         {
-            Debug.Log("MATCH OVER");
-            SceneManager.LoadScene("CharacterSelect");
-            ResetMatch();
+            SceneManager.LoadScene(winScene);
         }
         else
         {
-            SceneManager.LoadScene("CharacterSelect");
+            SceneManager.LoadScene(characterSelectScene);
         }
+    }
+
+    public bool IsMatchOver()
+    {
+        return p1Wins >= maxWins || p2Wins >= maxWins;
+    }
+
+    public int GetMatchWinner()
+    {
+        if (p1Wins >= maxWins) return 1;
+        if (p2Wins >= maxWins) return 2;
+        return 0;
     }
 
     public void ResetMatch()

@@ -1081,8 +1081,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxWins: 2
-  characterSelectScene: CharacterSelectScene
+  characterSelectScene: CharacterSelect
   gameScene: GameLevelScene
+  winScene: YouWIn
   p1Wins: 0
   p2Wins: 0
   lastRoundWinner: 0

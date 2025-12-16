@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 950891916097439501}
   - component: {fileID: 6926493086565917760}
   - component: {fileID: 7168008047224700041}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WASDPaper Prefab
   m_TagString: Player1
   m_Icon: {fileID: 0}
@@ -74,6 +74,7 @@ Transform:
   - {fileID: 8828335518484988135}
   - {fileID: 3598671040860011300}
   - {fileID: 2816790664047625975}
+  - {fileID: 4151115884761776512}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0.377, y: 0, z: 0}
 --- !u!61 &6270492275516255161
@@ -335,6 +336,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTag: Player2
   inkBlastPrefab: {fileID: 6175102929195033982, guid: 1fa8fc2ac71b4f34abd58606566ee5a8, type: 3}
+  rockRainPrefab: {fileID: 6788455090797065263, guid: a61ff39869e741a4c93158682e29d6cf, type: 3}
+  scissorSlashPrefab: {fileID: 0}
 --- !u!1 &4803054366381231237
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +382,7 @@ GameObject:
   - component: {fileID: 5526127275730013605}
   - component: {fileID: 2283799826470340272}
   m_Layer: 0
-  m_Name: P1_ULT
+  m_Name: P1_paperULT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,9 +523,138 @@ Transform:
   m_GameObject: {fileID: 6667886639288394847}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0032899445, y: -0, z: -0, w: 0.9999946}
-  m_LocalPosition: {x: 3.83, y: -0.0000011920671, z: 0.0000000031375185}
+  m_LocalPosition: {x: 3.02, y: -0.0000011920671, z: 0.0000000031375185}
   m_LocalScale: {x: 2.5, y: 2.4998374, z: 1.000026}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2938309355798205563}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6761425489756154482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4151115884761776512}
+  - component: {fileID: 2473518079625966036}
+  - component: {fileID: 8443253700141105317}
+  - component: {fileID: 3898178963972757531}
+  m_Layer: 0
+  m_Name: P1_rockULT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4151115884761776512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6761425489756154482}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0032899445, y: -0, z: -0, w: 0.9999946}
+  m_LocalPosition: {x: -17.152481, y: -13.2747135, z: 0.034939025}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2938309355798205563}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2473518079625966036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6761425489756154482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1631628248, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviewVisible: 1
+  RuntimeOcclusion: 0
+  RuntimeCollider: 0
+  mTrackableName: p1_arrock
+  mInitializedInEditor: 1
+  mDataSetPath: Vuforia/RPSPrints.xml
+  mAspectRatio: 1.36896
+  mImageTargetType: 0
+  mWidth: 1
+  mHeight: 1.36896
+  mRuntimeTexture: {fileID: 0}
+  mMotionHint: 1
+  mTrackingOptimization: 0
+  mTrackingOptimizationNeedsUpgrade: 0
+  mPreview: {fileID: 0}
+--- !u!114 &8443253700141105317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6761425489756154482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886328de6a5c14cbb85854fdf1a5085b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StatusFilter: 1
+  UsePoseSmoothing: 0
+  AnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 3.3333333
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3
+      value: 1
+      inSlope: 3.3333333
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  OnTargetFound:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7168008047224700041}
+        m_TargetAssemblyTypeName: UltimateMoveManager, Assembly-CSharp
+        m_MethodName: ActivateRockRain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTargetLost:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3898178963972757531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6761425489756154482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb46c26c5e0090f45bba2f0fc062bd9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

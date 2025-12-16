@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 922180161525560207}
   - component: {fileID: 9095448591296855604}
   m_Layer: 0
-  m_Name: P1_ULT_ROCK
+  m_Name: P1_rockULT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,8 +162,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 6253061990566541000}
   mHiddenRoot: {fileID: 0}
-  mTargetName: P1_arPaper
-  mDatasetName: 
+  mTargetName: p1_arrock
+  mDatasetName: Vuforia/RPSPrints.xml
   mCastedBehaviour: {fileID: 6253061990566541000}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 4798858135708331321}
   - component: {fileID: 5154478812714156869}
   m_Layer: 0
-  m_Name: P1_ULT
+  m_Name: P1_paperULT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -649,6 +649,7 @@ MonoBehaviour:
   enemyTag: Player2
   inkBlastPrefab: {fileID: 6175102929195033982, guid: 1fa8fc2ac71b4f34abd58606566ee5a8, type: 3}
   rockRainPrefab: {fileID: 6788455090797065263, guid: a61ff39869e741a4c93158682e29d6cf, type: 3}
+  scissorSlashPrefab: {fileID: 0}
 --- !u!1 &8550107585557126485
 GameObject:
   m_ObjectHideFlags: 0

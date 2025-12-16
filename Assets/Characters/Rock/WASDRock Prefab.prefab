@@ -803,8 +803,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myHealth: {fileID: 7475190798790583645}
   myID: {fileID: 4118210523338167110}
-  advantageModifier: 400
-  weaknessModifier: 150
+  advantageModifier: 100
+  weaknessModifier: -50
   strongAgainstNames:
   - scissors2
   weakAgainstNames:

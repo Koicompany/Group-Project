@@ -44,6 +44,7 @@ public class Health : MonoBehaviour
         if (dead || invincible) return;
 
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
+        Debug.Log(currentHealth);
 
         OnDamageTaken?.Invoke(damage);
         OnAnyPlayerDamaged?.Invoke(gameObject.tag, damage);

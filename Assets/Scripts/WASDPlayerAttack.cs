@@ -86,38 +86,12 @@ public class WASDPlayerAttack : MonoBehaviour
             0f
         );
 
-        if (hit.collider != null)
+        if (hit.collider != null && hit.collider.CompareTag(enemyTag))
         {
-            Health enemyHealth = hit.collider.GetComponent<Health>();
-            CharacterID enemyID = hit.collider.GetComponent<CharacterID>();
-
-            if (enemyHealth != null && enemyID != null)
-            {
-                float finalDamage = damage;
-
-                // Apply weaknesses/advantages if attacker has the manager
-                Weakness_Advantages_Manager wam = GetComponent<Weakness_Advantages_Manager>();
-                if (wam != null)
-                {
-                    // Advantage
-                    if (System.Array.Exists(wam.strongAgainstNames, n => n == enemyID.characterName))
-                    {
-                        finalDamage += wam.advantageModifier;
-                    }
-
-                    // Weakness
-                    if (System.Array.Exists(wam.weakAgainstNames, n => n == enemyID.characterName))
-                    {
-                        finalDamage -= wam.weaknessModifier;
-                        finalDamage = Mathf.Max(0, finalDamage); // prevent negative damage
-                    }
-                }
-
-                enemyHealth.TakeDamage(finalDamage);
-                Debug.Log($"{GetComponent<CharacterID>().characterName} damaged {enemyID.characterName} for {finalDamage}");
-            }
+            hit.collider.GetComponent<Health>()?.TakeDamage(damage);
         }
     }
+
 
 
     private void OnDrawGizmosSelected()

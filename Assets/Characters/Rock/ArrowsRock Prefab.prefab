@@ -531,8 +531,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myHealth: {fileID: 1007142515890343262}
   myID: {fileID: 2064627319119597301}
-  advantageModifier: 400
-  weaknessModifier: 150
+  advantageModifier: 100
+  weaknessModifier: -50
   strongAgainstNames:
   - scissors1
   weakAgainstNames:

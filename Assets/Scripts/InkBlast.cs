@@ -1,83 +1,44 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class InkBlast : MonoBehaviour
 {
-    [Header("Laser Settings")]
-    [SerializeField] private InkLaser laserPrefab;
-    [SerializeField] private float blastDuration = 2.5f;
+    [Header("Settings")]
+    [SerializeField] private InkLaser inkLaserPrefab;
+    [SerializeField] private float duration = 2.5f;
 
-    [Header("Targeting")]
-    [SerializeField] private string firePointName = "FirePoint";
+    private string targetTag;
+    private Transform firePoint;
+    private UltimateMoveManager owner;
 
-    private bool isFiring;
-
-    // CALLED BY VUFORIA
-    public void Fire(string targetTag)
+    public void Initialize(
+        UltimateMoveManager owner,
+        Transform firePoint,
+        string targetTag)
     {
-        Debug.Log("[InkBlast] Fire() called");
+        this.owner = owner;
+        this.firePoint = firePoint;
+        this.targetTag = targetTag;
 
-        if (isFiring)
-            return;
-
-        if (laserPrefab == null)
-        {
-            Debug.LogError("[InkBlast] Laser prefab missing");
-            return;
-        }
-
-        List<Transform> firePoints = ResolveFirePoints(targetTag);
-
-        if (firePoints.Count == 0)
-        {
-            Debug.LogWarning("[InkBlast] No fire points found");
-            return;
-        }
-
-        StartCoroutine(FireRoutine(firePoints, targetTag));
+        Fire();
+        StartCoroutine(Lifetime());
     }
 
-    // FIND FIRE POINTS SAFELY
-    private List<Transform> ResolveFirePoints(string targetTag)
+    private void Fire()
     {
-        List<Transform> results = new List<Transform>();
+        InkLaser laser = Instantiate(
+            inkLaserPrefab,
+            firePoint.position,
+            firePoint.rotation,
+            transform
+        );
 
-        GameObject[] players = GameObject.FindGameObjectsWithTag(targetTag);
-
-        foreach (GameObject player in players)
-        {
-            Transform fp = player.transform.Find(firePointName);
-
-            if (fp != null && fp.gameObject.activeInHierarchy)
-            {
-                results.Add(fp);
-            }
-        }
-
-        return results;
+        laser.Initialize(targetTag);
     }
 
-    // FIRING LOGIC
-    private IEnumerator FireRoutine(List<Transform> firePoints, string targetTag)
+    private IEnumerator Lifetime()
     {
-        isFiring = true;
-
-        foreach (Transform firePoint in firePoints)
-        {
-            if (firePoint == null) continue;
-
-            InkLaser laser = Instantiate(
-                laserPrefab,
-                firePoint.position,
-                firePoint.rotation
-            );
-
-            laser.Begin(targetTag);
-        }
-
-        yield return new WaitForSeconds(blastDuration);
-
-        isFiring = false;
+        yield return new WaitForSeconds(duration);
+        Destroy(gameObject);
     }
 }

@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 4156737562331429822}
   - component: {fileID: 6878820978404500069}
   - component: {fileID: 6059900971831612661}
+  - component: {fileID: 4096290303913322791}
   m_Layer: 11
   m_Name: ArrowsScissors Prefab
   m_TagString: Player2
@@ -359,6 +360,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   playerLayerName: Player 2
+--- !u!114 &4096290303913322791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4945375441576478074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37693658a992b4844ba98780c865fef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTag: Player1
+  inkBlastPrefab: {fileID: 470482756508955674, guid: 1fa8fc2ac71b4f34abd58606566ee5a8, type: 3}
 --- !u!1 &7092849460351891985
 GameObject:
   m_ObjectHideFlags: 0

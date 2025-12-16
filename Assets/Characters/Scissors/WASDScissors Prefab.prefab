@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2855252750711978700}
   - component: {fileID: 5525326251973906}
   - component: {fileID: 304702936460091275}
+  - component: {fileID: 2147090434083711305}
   m_Layer: 10
   m_Name: WASDScissors Prefab
   m_TagString: Player1
@@ -297,6 +298,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   playerLayerName: Player
+--- !u!114 &2147090434083711305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258278827671440895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37693658a992b4844ba98780c865fef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTag: Player2
+  inkBlastPrefab: {fileID: 470482756508955674, guid: 1fa8fc2ac71b4f34abd58606566ee5a8, type: 3}
 --- !u!1 &6890630662836182825
 GameObject:
   m_ObjectHideFlags: 0

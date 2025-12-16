@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 5030730279409444193}
   - component: {fileID: 7475190798790583645}
   - component: {fileID: 3159757688596311465}
+  - component: {fileID: 9098629968523575312}
   m_Layer: 10
   m_Name: WASDRock Prefab
   m_TagString: Player1
@@ -359,6 +360,20 @@ MonoBehaviour:
   colliderDistance: 6
   boxCollider: {fileID: 7370072891050543969}
   enemyTag: Player2
+--- !u!114 &9098629968523575312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047474471585648145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37693658a992b4844ba98780c865fef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTag: Player2
+  inkBlastPrefab: {fileID: 470482756508955674, guid: 1fa8fc2ac71b4f34abd58606566ee5a8, type: 3}
 --- !u!1 &8550107585557126485
 GameObject:
   m_ObjectHideFlags: 0

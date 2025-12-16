@@ -20,30 +20,25 @@ public class InkBlast : MonoBehaviour
         Fire();
         StartCoroutine(Lifetime());
     }
+
     private InkLaser currentLaser;
 
     private void Fire()
     {
-<<<<<<< HEAD
         if (inkLaserPrefab == null) return;
-=======
-        if (inkLaserPrefab == null)
-            return;
-
-        if (firePoint == null)
-        {
-            Debug.LogWarning("FirePoint not assigned on InkBlast prefab. Using prefab root as fallback.");
-        }
->>>>>>> 19d8fdbb21198f168fff7bc7dc3055026edc5c6b
 
         Vector3 spawnPos = (firePoint != null) ? firePoint.position : transform.position;
-        Quaternion spawnRot = (firePoint != null) ? firePoint.rotation : transform.rotation;
 
-<<<<<<< HEAD
+        // Mirror the rotation if player is flipped
+        Quaternion spawnRot = Quaternion.identity;
+        if (firePoint != null)
+            spawnRot = firePoint.rotation;
+
+        // Check if the parent is flipped
+        if (transform.localScale.x < 0)
+            spawnRot *= Quaternion.Euler(0, 180, 0); // flip horizontally
+
         currentLaser = Instantiate(
-=======
-        InkLaser laser = Instantiate(
->>>>>>> 19d8fdbb21198f168fff7bc7dc3055026edc5c6b
             inkLaserPrefab,
             spawnPos,
             spawnRot
@@ -51,6 +46,7 @@ public class InkBlast : MonoBehaviour
 
         currentLaser.Initialize(targetTag);
     }
+
 
     private IEnumerator Lifetime()
     {

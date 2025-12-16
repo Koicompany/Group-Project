@@ -334,11 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTag: Player2
-<<<<<<< HEAD
   inkBlastPrefab: {fileID: 6175102929195033982, guid: 1fa8fc2ac71b4f34abd58606566ee5a8, type: 3}
-=======
-  inkBlastPrefab: {fileID: 0}
->>>>>>> 19d8fdbb21198f168fff7bc7dc3055026edc5c6b
 --- !u!1 &4803054366381231237
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,9 +468,9 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 950891916097439501}
-        m_TargetAssemblyTypeName: WASDPlayerAttack, Assembly-CSharp
-        m_MethodName: FireProjectile
+      - m_Target: {fileID: 7168008047224700041}
+        m_TargetAssemblyTypeName: UltimateMoveManager, Assembly-CSharp
+        m_MethodName: ActivateInkBlast
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class InkLaser : MonoBehaviour
@@ -7,29 +9,44 @@ public class InkLaser : MonoBehaviour
     [SerializeField] private float tickRate = 0.25f;
 
     private string targetTag;
-    private float timer;
+    private HashSet<Health> targets = new HashSet<Health>();
 
     public void Initialize(string targetTag)
     {
         this.targetTag = targetTag;
+        StartCoroutine(DamageRoutine());
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag(targetTag))
-            return;
-
-        timer += Time.deltaTime;
-
-        if (timer >= tickRate)
+        if (other.CompareTag(targetTag))
         {
-            timer = 0f;
-
             Health health = other.GetComponent<Health>();
             if (health != null)
+                targets.Add(health);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag(targetTag))
+        {
+            Health health = other.GetComponent<Health>();
+            if (health != null)
+                targets.Remove(health);
+        }
+    }
+
+    private IEnumerator DamageRoutine()
+    {
+        while (true)
+        {
+            foreach (var health in targets)
             {
-                health.TakeDamage(damagePerTick);
+                if (health != null)
+                    health.TakeDamage(damagePerTick);
             }
+            yield return new WaitForSeconds(tickRate);
         }
     }
 }

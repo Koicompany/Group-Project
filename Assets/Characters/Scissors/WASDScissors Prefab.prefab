@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTag: Player2
-  inkBlastPrefab: {fileID: 6175102929195033982, guid: 1fa8fc2ac71b4f34abd58606566ee5a8, type: 3}
+  inkBlastPrefab: {fileID: 470482756508955674, guid: 1fa8fc2ac71b4f34abd58606566ee5a8, type: 3}
 --- !u!1 &6890630662836182825
 GameObject:
   m_ObjectHideFlags: 0

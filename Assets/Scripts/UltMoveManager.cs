@@ -7,6 +7,7 @@ public class UltimateMoveManager : MonoBehaviour
 
     [Header("Ultimate Moves")]
     [SerializeField] private InkBlast inkBlastPrefab;
+    [SerializeField] private RockRainUltimate rockRainPrefab;
 
     private Transform firePoint;
 
@@ -34,6 +35,23 @@ public class UltimateMoveManager : MonoBehaviour
 
         blast.Initialize(enemyTag); // only pass target tag
     }
+<<<<<<< HEAD
 
 
+=======
+    public void ActivateRockRain()
+    {
+        if (rockRainPrefab == null)
+            return;
+
+        RockRainUltimate rain = Instantiate(
+            rockRainPrefab,
+            Vector3.zero,
+            Quaternion.identity
+        );
+
+        rain.Initialize(enemyTag);
+    }
+>>>>>>> 4be101a5df99dcae8028d51143032bf196e739de
 }
+

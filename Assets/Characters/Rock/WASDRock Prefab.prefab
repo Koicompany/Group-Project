@@ -1,5 +1,141 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2822568756091878001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2154308925497061605}
+  - component: {fileID: 4133423477498347752}
+  - component: {fileID: 8285943782213103834}
+  - component: {fileID: 5250711393689342978}
+  m_Layer: 0
+  m_Name: P1_ULT_ROCK
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2154308925497061605
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2822568756091878001}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.2459, y: 26.18, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2324229377577975629}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4133423477498347752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2822568756091878001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1631628248, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviewVisible: 1
+  RuntimeOcclusion: 0
+  RuntimeCollider: 0
+  mTrackableName: p1_arrock
+  mInitializedInEditor: 1
+  mDataSetPath: Vuforia/RPSPrints.xml
+  mAspectRatio: 1.36896
+  mImageTargetType: 0
+  mWidth: 1
+  mHeight: 1.36896
+  mRuntimeTexture: {fileID: 0}
+  mMotionHint: 1
+  mTrackingOptimization: 0
+  mTrackingOptimizationNeedsUpgrade: 0
+  mPreview: {fileID: 5250711393689342978}
+--- !u!114 &8285943782213103834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2822568756091878001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886328de6a5c14cbb85854fdf1a5085b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StatusFilter: 1
+  UsePoseSmoothing: 0
+  AnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 3.3333333
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3
+      value: 1
+      inSlope: 3.3333333
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  OnTargetFound:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9098629968523575312}
+        m_TargetAssemblyTypeName: UltimateMoveManager, Assembly-CSharp
+        m_MethodName: ActivateRockRain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTargetLost:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5250711393689342978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2822568756091878001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 4133423477498347752}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: p1_arrock
+  mDatasetName: Vuforia/RPSPrints.xml
+  mCastedBehaviour: {fileID: 4133423477498347752}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
 --- !u!1 &2905277194856907669
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +180,7 @@ GameObject:
   - component: {fileID: 4798858135708331321}
   - component: {fileID: 5154478812714156869}
   m_Layer: 0
-  m_Name: P1_ULT
+  m_Name: P1_ULT_INK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,6 +216,7 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
+<<<<<<< HEAD
   mTrackableName: P2_arPaper
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/RPSPrints.xml
@@ -88,6 +225,16 @@ MonoBehaviour:
   mWidth: 0.1467793
   mHeight: 0.2
   mRuntimeTexture: {fileID: 2800000, guid: df68694030faed2489b16bbe12c1c871, type: 3}
+=======
+  mTrackableName: p1_arpaper
+  mInitializedInEditor: 1
+  mDataSetPath: Vuforia/RPSPrints.xml
+  mAspectRatio: 1.350852
+  mImageTargetType: 0
+  mWidth: 1
+  mHeight: 1.350852
+  mRuntimeTexture: {fileID: 0}
+>>>>>>> 4be101a5df99dcae8028d51143032bf196e739de
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
@@ -164,7 +311,11 @@ MonoBehaviour:
   mHiddenRoot: {fileID: 0}
   mTargetName: p1_arpaper
   mDatasetName: Vuforia/RPSPrints.xml
+<<<<<<< HEAD
   mCastedBehaviour: {fileID: 119769695879530456}
+=======
+  mCastedBehaviour: {fileID: 5779594193388771053}
+>>>>>>> 4be101a5df99dcae8028d51143032bf196e739de
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
 --- !u!1 &8047474471585648145
@@ -209,7 +360,12 @@ Transform:
   m_Children:
   - {fileID: 8630639730751699928}
   - {fileID: 5225171578301828566}
+<<<<<<< HEAD
   - {fileID: 753545783965773512}
+=======
+  - {fileID: 5323678652886487772}
+  - {fileID: 2154308925497061605}
+>>>>>>> 4be101a5df99dcae8028d51143032bf196e739de
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &7370072891050543969
@@ -510,7 +666,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTag: Player2
+<<<<<<< HEAD
   inkBlastPrefab: {fileID: 6175102929195033982, guid: 1fa8fc2ac71b4f34abd58606566ee5a8, type: 3}
+=======
+  inkBlastPrefab: {fileID: 0}
+  rockRainPrefab: {fileID: 3515519205062930348, guid: 430efb565afe57146a8f5e6355554d0a, type: 3}
+>>>>>>> 4be101a5df99dcae8028d51143032bf196e739de
 --- !u!1 &8550107585557126485
 GameObject:
   m_ObjectHideFlags: 0

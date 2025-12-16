@@ -125,7 +125,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inkLaserPrefab: {fileID: 6628324566350432462, guid: b7a5a1006b251ed47a3c8a14cfa3a42f, type: 3}
+<<<<<<< HEAD
   duration: 3
+=======
+  duration: 4
+>>>>>>> 19d8fdbb21198f168fff7bc7dc3055026edc5c6b
   firePoint: {fileID: 7498548927566661511}
 --- !u!1 &7082098014631661434
 GameObject:

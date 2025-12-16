@@ -253,7 +253,10 @@ Transform:
   - {fileID: 5348286790817516959}
   - {fileID: 5746389698790210168}
   - {fileID: 2600595960613704459}
+<<<<<<< HEAD
   - {fileID: 8366689004541682049}
+=======
+>>>>>>> 19d8fdbb21198f168fff7bc7dc3055026edc5c6b
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &3306757794987300024
@@ -514,7 +517,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTag: Player1
+<<<<<<< HEAD
   inkBlastPrefab: {fileID: 6175102929195033982, guid: 1fa8fc2ac71b4f34abd58606566ee5a8, type: 3}
+=======
+  inkBlastPrefab: {fileID: 0}
+>>>>>>> 19d8fdbb21198f168fff7bc7dc3055026edc5c6b
 --- !u!1 &8468246381415174576
 GameObject:
   m_ObjectHideFlags: 0

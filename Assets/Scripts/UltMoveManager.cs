@@ -36,9 +36,13 @@ public class UltimateMoveManager : MonoBehaviour
         blast.Initialize(enemyTag); // only pass target tag
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
+=======
+<<<<<<< Updated upstream
+>>>>>>> 19d8fdbb21198f168fff7bc7dc3055026edc5c6b
     public void ActivateRockRain()
     {
         if (rockRainPrefab == null)
@@ -52,6 +56,13 @@ public class UltimateMoveManager : MonoBehaviour
 
         rain.Initialize(enemyTag);
     }
+<<<<<<< HEAD
 >>>>>>> 4be101a5df99dcae8028d51143032bf196e739de
+=======
+=======
+
+
+>>>>>>> Stashed changes
+>>>>>>> 19d8fdbb21198f168fff7bc7dc3055026edc5c6b
 }
 

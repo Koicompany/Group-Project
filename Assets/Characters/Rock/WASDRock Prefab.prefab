@@ -309,13 +309,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 119769695879530456}
   mHiddenRoot: {fileID: 0}
+<<<<<<< Updated upstream
   mTargetName: p1_arpaper
   mDatasetName: Vuforia/RPSPrints.xml
 <<<<<<< HEAD
   mCastedBehaviour: {fileID: 119769695879530456}
 =======
   mCastedBehaviour: {fileID: 5779594193388771053}
+<<<<<<< HEAD
 >>>>>>> 4be101a5df99dcae8028d51143032bf196e739de
+=======
+=======
+  mTargetName: P1_arPaper
+  mDatasetName: 
+  mCastedBehaviour: {fileID: 119769695879530456}
+>>>>>>> Stashed changes
+>>>>>>> 19d8fdbb21198f168fff7bc7dc3055026edc5c6b
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
 --- !u!1 &8047474471585648145
@@ -361,11 +370,20 @@ Transform:
   - {fileID: 8630639730751699928}
   - {fileID: 5225171578301828566}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 753545783965773512}
 =======
   - {fileID: 5323678652886487772}
   - {fileID: 2154308925497061605}
 >>>>>>> 4be101a5df99dcae8028d51143032bf196e739de
+=======
+<<<<<<< Updated upstream
+  - {fileID: 5323678652886487772}
+  - {fileID: 2154308925497061605}
+=======
+  - {fileID: 753545783965773512}
+>>>>>>> Stashed changes
+>>>>>>> 19d8fdbb21198f168fff7bc7dc3055026edc5c6b
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &7370072891050543969
@@ -667,11 +685,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTag: Player2
 <<<<<<< HEAD
+<<<<<<< HEAD
   inkBlastPrefab: {fileID: 6175102929195033982, guid: 1fa8fc2ac71b4f34abd58606566ee5a8, type: 3}
 =======
   inkBlastPrefab: {fileID: 0}
   rockRainPrefab: {fileID: 3515519205062930348, guid: 430efb565afe57146a8f5e6355554d0a, type: 3}
 >>>>>>> 4be101a5df99dcae8028d51143032bf196e739de
+=======
+<<<<<<< Updated upstream
+  inkBlastPrefab: {fileID: 0}
+  rockRainPrefab: {fileID: 3515519205062930348, guid: 430efb565afe57146a8f5e6355554d0a, type: 3}
+=======
+  inkBlastPrefab: {fileID: 6175102929195033982, guid: 1fa8fc2ac71b4f34abd58606566ee5a8, type: 3}
+>>>>>>> Stashed changes
+>>>>>>> 19d8fdbb21198f168fff7bc7dc3055026edc5c6b
 --- !u!1 &8550107585557126485
 GameObject:
   m_ObjectHideFlags: 0

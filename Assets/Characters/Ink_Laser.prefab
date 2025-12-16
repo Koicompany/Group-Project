@@ -47,8 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 838372219d2092d41b0518ec69e1c0eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   damagePerTick: 20
   tickRate: 0.25
+=======
+  damagePerTick: 10
+  tickRate: 0.05
+>>>>>>> 19d8fdbb21198f168fff7bc7dc3055026edc5c6b
 --- !u!212 &5909536411879387834
 SpriteRenderer:
   m_ObjectHideFlags: 0

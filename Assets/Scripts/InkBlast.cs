@@ -24,12 +24,26 @@ public class InkBlast : MonoBehaviour
 
     private void Fire()
     {
+<<<<<<< HEAD
         if (inkLaserPrefab == null) return;
+=======
+        if (inkLaserPrefab == null)
+            return;
+
+        if (firePoint == null)
+        {
+            Debug.LogWarning("FirePoint not assigned on InkBlast prefab. Using prefab root as fallback.");
+        }
+>>>>>>> 19d8fdbb21198f168fff7bc7dc3055026edc5c6b
 
         Vector3 spawnPos = (firePoint != null) ? firePoint.position : transform.position;
         Quaternion spawnRot = (firePoint != null) ? firePoint.rotation : transform.rotation;
 
+<<<<<<< HEAD
         currentLaser = Instantiate(
+=======
+        InkLaser laser = Instantiate(
+>>>>>>> 19d8fdbb21198f168fff7bc7dc3055026edc5c6b
             inkLaserPrefab,
             spawnPos,
             spawnRot

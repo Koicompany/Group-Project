@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
+    <ImageTarget name="colorpaperstage" size="1.000000 0.706250" />
+    <ImageTarget name="colorrockstage" size="1.000000 0.725000" />
+    <ImageTarget name="colorscissorstage" size="1.000000 0.734375" />
     <ImageTarget name="distinctpaper" size="1.000000 1.362590" />
     <ImageTarget name="distinctrock" size="1.000000 1.379765" />
     <ImageTarget name="distinctscissor" size="1.000000 1.362193" />

@@ -529,13 +529,13 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: p1_arscissor
+  mTrackableName: p1_arpaper
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/RPSPrints.xml
-  mAspectRatio: 1.395714
+  mAspectRatio: 1.350852
   mImageTargetType: 0
   mWidth: 1
-  mHeight: 1.395714
+  mHeight: 1.350852
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
@@ -689,13 +689,13 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: p1_arscissor
+  mTrackableName: p1_arrock
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/RPSPrints.xml
-  mAspectRatio: 1.395714
+  mAspectRatio: 1.36896
   mImageTargetType: 0
   mWidth: 1
-  mHeight: 1.395714
+  mHeight: 1.36896
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
